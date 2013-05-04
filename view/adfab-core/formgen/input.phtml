@@ -1,0 +1,45 @@
+<?php $this->plugin('translate')->setTranslatorTextDomain('adfabcore');?>
+<?php echo '<h3>'. $this->translate($this->result->name) .'</h3>'; ?>
+
+<form action="/form" method="post" name="add_form_data" id="add_form_data" class="<?php echo $this->result->id; ?>">
+	<ul class="nav nav-list">
+		<li>
+			<label><?php echo $this->translate('Input Name');?></label>
+			<input type="text" name="input_name" maxlength="255" value="text">
+		</li>
+        <li>
+			<label><?php echo $this->translate('Replace Label Text');?></label>
+			<input type="text" name="text_label" maxlength="255" value="Text">
+		</li>
+		<li>
+			<label><?php echo $this->translate('Placeholder Text');?></label>
+			<input type="text" name="placeholder_text" maxlength="255" value="<?php echo $this->translate('Type something...');?>">
+		</li>
+		<li>
+			<label><?php echo $this->translate('Required');?></label>
+			<select name="required">
+				<option value="no"><?php echo $this->translate('No');?></option>
+				<option value="yes"><?php echo $this->translate('Yes');?></option>
+			</select>
+		</li>
+        <li>
+            <label><?php echo $this->translate('Validate between');?></label>
+            <input type="number" name="number_min" class="input-small" placeholder="min">
+            <input type="number" name="number_max" class="input-small" placeholder="max">
+            <p><?php echo $this->translate('number of characters');?></p>
+        </li>
+        <li>
+            <label><?php echo $this->translate('Class');?></label>
+            <input type="text" name="number_class" maxlength="255" placeholder="class1 class2..">
+        </li>
+        <li>
+            <label><?php echo $this->translate('Id');?></label>
+            <input type="text" name="number_id" maxlength="255" placeholder="id">
+        </li>
+		<li>
+			<button class="btn btn-primary" id="add_form_text"><?php echo $this->translate('Save');?></button>
+		</li>
+	</ul>
+</form>
+
+<?php //echo '<code>'.$this->result->id.'</code>'; ?>

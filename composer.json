@@ -1,0 +1,41 @@
+{
+    "name": "adfab/adfab-core",
+    "description": "Common features for all AdFab ZF2 dev",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "zf2",
+        "playground",
+        "adfab-core"
+    ],
+    "homepage": "https://github.com/gregorybesson/AdfabCore",
+    "authors": [
+        {
+            "name": "Greg Besson",
+            "email": "gregory.besson@adfab.fr",
+            "homepage": "http://www.adfab.fr"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.3",
+		"zendframework/zend-mvc" : "~2.1",
+		"zendframework/zend-form" : "~2.1",
+		"zendframework/zend-loader" : "~2.1",
+		"zendframework/zend-servicemanager" : "~2.1",
+		"zendframework/zend-modulemanager" : "~2.1",
+		"zendframework/zend-stdlib" : "~2.1",
+		"zf-commons/zfc-base" : "0.*",
+    },
+    "require-dev": {
+        "doctrine/doctrine-orm-module": "0.*"
+    },
+    "autoload" : {
+		"psr-0" : {
+			"AdfabCore" : "src/"
+		},
+		"classmap" : [
+			"./Module.php"
+		]
+	},
+}
