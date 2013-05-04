@@ -1,4 +1,4 @@
 AdfabCore
 =========
 
-Core of the platform
+Core of the platform !
