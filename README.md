@@ -11,5 +11,4 @@ Cette librairie permet l'usage de fonctionnalités communes aux projets AdFab :
 - MailService : Service d'envoi de mails permettant de se baser sur des templates de mail.
 - Slugify : Fonctionnalité permettant de transformer du texte en "slug" utilisable comme url
 
-
 Chacune de ces fonctionnalités est expliquée dans le wiki : https://github.com/gregorybesson/AdfabCore/wiki
