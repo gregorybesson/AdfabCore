@@ -3,12 +3,12 @@
     "description": "Common features for all AdFab ZF2 dev",
     "type": "library",
     "license": "BSD-3-Clause",
+    "homepage": "https://github.com/gregorybesson/AdfabCore",
     "keywords": [
         "zf2",
         "playground",
         "adfab-core"
     ],
-    "homepage": "https://github.com/gregorybesson/AdfabCore",
     "authors": [
         {
             "name": "Greg Besson",
