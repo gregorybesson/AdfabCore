@@ -33,9 +33,6 @@
     "autoload" : {
 		"psr-0" : {
 			"AdfabCore" : "src/"
-		},
-		"classmap" : [
-			"./Module.php"
-		]
-	},
+		}
+	}
 }
