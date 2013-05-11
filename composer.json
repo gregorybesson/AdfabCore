@@ -25,7 +25,7 @@
 		"zendframework/zend-servicemanager" : "~2.1",
 		"zendframework/zend-modulemanager" : "~2.1",
 		"zendframework/zend-stdlib" : "~2.1",
-		"zf-commons/zfc-base" : "0.*",
+		"zf-commons/zfc-base" : "0.*"
     },
     "require-dev": {
         "doctrine/doctrine-orm-module": "0.*"
@@ -33,9 +33,6 @@
     "autoload" : {
 		"psr-0" : {
 			"AdfabCore" : "src/"
-		},
-		"classmap" : [
-			"./Module.php"
-		]
-	},
+		}
+	}
 }
