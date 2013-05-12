@@ -49,10 +49,16 @@ class ElfinderController extends AbstractActionController
         $view = new ViewModel();
         $this->getConfig();
 
+        $root = array();
+        if(isset($this->Config['QuRoots'])){
+            $root = $this->Config['QuRoots'];
+        }
+        
         $opts = array(
             'debug' => false,
-            'roots' => array($this->Config['QuRoots'])
+            'roots' => array($root)
         );
+        
         $connector = new \elFinderConnector(new \elFinder($opts));
         $connector->run();
 
@@ -83,7 +89,11 @@ class ElfinderController extends AbstractActionController
     {
         if (!$this->Config) {
             $config       = $this->getServiceLocator()->get('config');
-            $this->Config = $config['adfabcore']['QuConfig']['QuElFinder'];
+            if(isset($config['adfabcore']) && isset($config['adfabcore']['QuConfig']) && isset($config['adfabcore']['QuConfig']['QuElFinder'])){
+                $this->Config = $config['adfabcore']['QuConfig']['QuElFinder'];
+            } else {
+                $this->Config = array();
+            }
         }
 
         return $this->Config;
