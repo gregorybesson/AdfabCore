@@ -1,5 +1,5 @@
 {
-    "name": "adfab/adfab-core",
+    "name": "adfab/core",
     "description": "Common features for all AdFab ZF2 dev",
     "type": "library",
     "license": "BSD-3-Clause",
