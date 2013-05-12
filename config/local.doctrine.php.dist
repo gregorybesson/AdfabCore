@@ -1,0 +1,42 @@
+<?php
+/**
+ * 
+ * This is a sample of Doctrine config for a database in UTF8
+ * CAUTION : The MySQL database should not be in strict mode.
+ * (It would result in errors thrown on validation forms)
+ * Check the strict mode : SELECT @@GLOBAL.sql_mode;
+ *                         SELECT @@SESSION.sql_mode;
+ * Remove Strict Mode :    SET @@global.sql_mode= 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
+ */ 
+
+$dbParams = array(
+    'database'  => 'democore',
+    'username'  => 'root',
+    'password'  => '',
+    'hostname'  => '127.0.0.1',
+    'port'		=> '3306',
+    'charset'	=> 'utf8',
+    'driverOptions' => array(
+        1002 => 'SET NAMES utf8',
+    ),
+);
+
+return array(
+    'doctrine' => array(
+        'connection' => array(
+            // default connection name
+            'orm_default' => array(
+                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
+                'params' => array(
+                    'host'     => $dbParams['hostname'],
+                    'port'     => $dbParams['port'],
+                    'user'     => $dbParams['username'],
+                    'password' => $dbParams['password'],
+                    'dbname'   => $dbParams['database'],
+                    'charset'  => $dbParams['charset'],
+                    'driverOptions' => $dbParams['driverOptions'],
+                )
+            )
+        ),
+    ),
+);
