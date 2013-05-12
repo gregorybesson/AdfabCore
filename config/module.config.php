@@ -110,203 +110,203 @@ return array(
                             ),
                         )
                     ),
-                        'formgen' => array(
-                                'type'    => 'Literal',
-                                'options' => array(
-                                        'route'    => '/formgen',
-                                        'defaults' => array(
-                                                'controller'    => 'AdfabCore\Controller\Formgen',
-                                                'action'        => 'index',
-                                        ),
-                                ),
-                                'may_terminate' => true,
-                                'child_routes' => array(
-                                        'create' => array(
-                                                'type' => 'Literal',
-                                                'options' => array(
-                                                        'route' => '/create',
-                                                        'defaults' => array(
-                                                                'controller' => 'AdfabCore\Controller\Formgen',
-                                                                'action'     => 'create',
-                                                        ),
-                                                ),
-                                        ),
-                                        'view' => array(
-                                                'type' => 'segment',
-                                                'options' => array(
-                                                        'route' => '/view[/:form]',
-                                                        'constraints' => array(
-                                                                'form' => '[a-zA-Z0-9_-]+'
-                                                        ),
-                                                        'defaults' => array(
-                                                                'controller' => 'AdfabCore\Controller\Formgen',
-                                                                'action'     => 'view',
-                                                        ),
-                                                ),
-                                        ),
-                                        'input' => array(
-                                                'type' => 'Literal',
-                                                'options' => array(
-                                                        'route' => '/input',
-                                                        'defaults' => array(
-                                                                'controller' => 'AdfabCore\Controller\Formgen',
-                                                                'action'     => 'input',
-                                                        ),
-                                                ),
-                                        ),
-                                        'paragraph' => array(
-                                                'type' => 'Literal',
-                                                'options' => array(
-                                                        'route' => '/paragraph',
-                                                        'defaults' => array(
-                                                                'controller' => 'AdfabCore\Controller\Formgen',
-                                                                'action'     => 'paragraph',
-                                                        ),
-                                                ),
-                                        ),
-                                        'number' => array(
-                                                'type' => 'Literal',
-                                                'options' => array(
-                                                        'route' => '/number',
-                                                        'defaults' => array(
-                                                                'controller' => 'AdfabCore\Controller\Formgen',
-                                                                'action'     => 'number',
-                                                        ),
-                                                ),
-                                        ),
-                                        'phone' => array(
-                                                'type' => 'Literal',
-                                                'options' => array(
-                                                        'route' => '/phone',
-                                                        'defaults' => array(
-                                                                'controller' => 'AdfabCore\Controller\Formgen',
-                                                                'action'     => 'phone',
-                                                        ),
-                                                ),
-                                        ),
-                                        'checkbox' => array(
-                                                'type' => 'Literal',
-                                                'options' => array(
-                                                        'route' => '/checkbox',
-                                                        'defaults' => array(
-                                                                'controller' => 'AdfabCore\Controller\Formgen',
-                                                                'action'     => 'checkbox',
-                                                        ),
-                                                ),
-                                        ),
-                                        'radio' => array(
-                                                'type' => 'Literal',
-                                                'options' => array(
-                                                        'route' => '/radio',
-                                                        'defaults' => array(
-                                                                'controller' => 'AdfabCore\Controller\Formgen',
-                                                                'action'     => 'radio',
-                                                        ),
-                                                ),
-                                        ),
-                                        'dropdown' => array(
-                                                'type' => 'Literal',
-                                                'options' => array(
-                                                        'route' => '/dropdown',
-                                                        'defaults' => array(
-                                                                'controller' => 'AdfabCore\Controller\Formgen',
-                                                                'action'     => 'dropdown',
-                                                        ),
-                                                ),
-                                        ),
-                                        'password' => array(
-                                                'type' => 'Literal',
-                                                'options' => array(
-                                                        'route' => '/password',
-                                                        'defaults' => array(
-                                                                'controller' => 'AdfabCore\Controller\Formgen',
-                                                                'action'     => 'password',
-                                                        ),
-                                                ),
-                                        ),
-                                        'passwordverify' => array(
-                                                'type' => 'Literal',
-                                                'options' => array(
-                                                        'route' => '/passwordverify',
-                                                        'defaults' => array(
-                                                                'controller' => 'AdfabCore\Controller\Formgen',
-                                                                'action'     => 'passwordverify',
-                                                        ),
-                                                ),
-                                        ),
-                                        'email' => array(
-                                                'type' => 'Literal',
-                                                'options' => array(
-                                                        'route' => '/email',
-                                                        'defaults' => array(
-                                                                'controller' => 'AdfabCore\Controller\Formgen',
-                                                                'action'     => 'email',
-                                                        ),
-                                                ),
-                                        ),
-                                        'date' => array(
-                                                'type' => 'Literal',
-                                                'options' => array(
-                                                        'route' => '/date',
-                                                        'defaults' => array(
-                                                                'controller' => 'Index',
-                                                                'action'     => 'date',
-                                                        ),
-                                                ),
-                                        ),
-                                        'upload' => array(
-                                                'type' => 'Literal',
-                                                'options' => array(
-                                                        'route' => '/upload',
-                                                        'defaults' => array(
-                                                                'controller' => 'AdfabCore\Controller\Formgen',
-                                                                'action'     => 'upload',
-                                                        ),
-                                                ),
-                                        ),
-                                        'creditcard' => array(
-                                                'type' => 'Literal',
-                                                'options' => array(
-                                                        'route' => '/creditcard',
-                                                        'defaults' => array(
-                                                                'controller' => 'AdfabCore\Controller\Formgen',
-                                                                'action'     => 'creditcard',
-                                                        ),
-                                                ),
-                                        ),
-                                        'url' => array(
-                                                'type' => 'Literal',
-                                                'options' => array(
-                                                        'route' => '/url',
-                                                        'defaults' => array(
-                                                                'controller' => 'AdfabCore\Controller\Formgen',
-                                                                'action'     => 'url',
-                                                        ),
-                                                ),
-                                        ),
-                                        'hidden' => array(
-                                                'type' => 'Literal',
-                                                'options' => array(
-                                                        'route' => '/hidden',
-                                                        'defaults' => array(
-                                                                'controller' => 'AdfabCore\Controller\Formgen',
-                                                                'action'     => 'hidden',
-                                                        ),
-                                                ),
-                                        ),
-                                        'test' => array(
-                                                'type' => 'Literal',
-                                                'options' => array(
-                                                        'route' => '/test',
-                                                        'defaults' => array(
-                                                                'controller' => 'AdfabCore\Controller\Formgen',
-                                                                'action'     => 'test',
-                                                        ),
-                                                ),
-                                        ),
+                    'formgen' => array(
+                        'type'    => 'Literal',
+                        'options' => array(
+                                'route'    => '/formgen',
+                                'defaults' => array(
+                                        'controller'    => 'AdfabCore\Controller\Formgen',
+                                        'action'        => 'index',
                                 ),
                         ),
-                )
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'create' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/create',
+                                    'defaults' => array(
+                                        'controller' => 'AdfabCore\Controller\Formgen',
+                                        'action'     => 'create',
+                                    ),
+                                ),
+                            ),
+                            'view' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                    'route' => '/view[/:form]',
+                                    'constraints' => array(
+                                        'form' => '[a-zA-Z0-9_-]+'
+                                    ),
+                                    'defaults' => array(
+                                        'controller' => 'AdfabCore\Controller\Formgen',
+                                        'action'     => 'view',
+                                    ),
+                                ),
+                            ),
+                            'input' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/input',
+                                    'defaults' => array(
+                                        'controller' => 'AdfabCore\Controller\Formgen',
+                                        'action'     => 'input',
+                                    ),
+                                ),
+                            ),
+                            'paragraph' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/paragraph',
+                                    'defaults' => array(
+                                        'controller' => 'AdfabCore\Controller\Formgen',
+                                        'action'     => 'paragraph',
+                                    ),
+                                ),
+                            ),
+                            'number' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/number',
+                                    'defaults' => array(
+                                        'controller' => 'AdfabCore\Controller\Formgen',
+                                        'action'     => 'number',
+                                    ),
+                                ),
+                            ),
+                            'phone' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/phone',
+                                    'defaults' => array(
+                                        'controller' => 'AdfabCore\Controller\Formgen',
+                                        'action'     => 'phone',
+                                    ),
+                                ),
+                            ),
+                            'checkbox' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/checkbox',
+                                    'defaults' => array(
+                                        'controller' => 'AdfabCore\Controller\Formgen',
+                                        'action'     => 'checkbox',
+                                    ),
+                                ),
+                            ),
+                            'radio' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/radio',
+                                    'defaults' => array(
+                                        'controller' => 'AdfabCore\Controller\Formgen',
+                                        'action'     => 'radio',
+                                    ),
+                                ),
+                            ),
+                            'dropdown' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/dropdown',
+                                    'defaults' => array(
+                                        'controller' => 'AdfabCore\Controller\Formgen',
+                                        'action'     => 'dropdown',
+                                    ),
+                                ),
+                            ),
+                            'password' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/password',
+                                    'defaults' => array(
+                                        'controller' => 'AdfabCore\Controller\Formgen',
+                                        'action'     => 'password',
+                                    ),
+                                ),
+                            ),
+                            'passwordverify' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/passwordverify',
+                                    'defaults' => array(
+                                        'controller' => 'AdfabCore\Controller\Formgen',
+                                        'action'     => 'passwordverify',
+                                    ),
+                                ),
+                            ),
+                            'email' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/email',
+                                    'defaults' => array(
+                                        'controller' => 'AdfabCore\Controller\Formgen',
+                                        'action'     => 'email',
+                                    ),
+                                ),
+                            ),
+                            'date' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/date',
+                                    'defaults' => array(
+                                        'controller' => 'Index',
+                                        'action'     => 'date',
+                                    ),
+                                ),
+                            ),
+                            'upload' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/upload',
+                                    'defaults' => array(
+                                        'controller' => 'AdfabCore\Controller\Formgen',
+                                        'action'     => 'upload',
+                                    ),
+                                ),
+                            ),
+                            'creditcard' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/creditcard',
+                                    'defaults' => array(
+                                        'controller' => 'AdfabCore\Controller\Formgen',
+                                        'action'     => 'creditcard',
+                                    ),
+                                ),
+                            ),
+                            'url' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/url',
+                                    'defaults' => array(
+                                        'controller' => 'AdfabCore\Controller\Formgen',
+                                        'action'     => 'url',
+                                    ),
+                                ),
+                            ),
+                            'hidden' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/hidden',
+                                    'defaults' => array(
+                                        'controller' => 'AdfabCore\Controller\Formgen',
+                                        'action'     => 'hidden',
+                                    ),
+                                ),
+                            ),
+                            'test' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/test',
+                                    'defaults' => array(
+                                        'controller' => 'AdfabCore\Controller\Formgen',
+                                        'action'     => 'test',
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
             ),
         ),
     ),

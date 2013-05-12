@@ -23,5 +23,5 @@
 </div>
 <script>
 // basepath global var put by Zend
-var basepath='<?php echo $this->url('zfcadmin'); ?>';
+var basepath='<?php echo $this->url('zfcadmin',array(), array('force_canonical' => true)) ?>';
 </script>
