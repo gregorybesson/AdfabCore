@@ -11,5 +11,6 @@ Cette librairie permet l'usage de fonctionnalités communes aux projets AdFab :
 - MailService : Service d'envoi de mails permettant de se baser sur des templates de mail.
 - Slugify : Fonctionnalité permettant de transformer du texte en "slug" utilisable comme url
 - Core layout : Fonctionnalité permettant de réaliser le design structurel de votre site.
+- Form Generator : Ce générateur s'appuie sur un fork de https://github.com/patrioticcow/Zend-Form et propose la persistence en BDD et la création à la volée du formulaire correspondant.
 
 Chacune de ces fonctionnalités est expliquée dans le wiki : https://github.com/gregorybesson/AdfabCore/wiki
