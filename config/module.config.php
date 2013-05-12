@@ -66,32 +66,6 @@ return array(
                     ),
                 ),
             ),
-            'facebook' => array(
-                'type' => 'Segment',
-                'options' => array(
-                    'route' => '/facebook/[:action][/]',
-                    'constraints' => array(
-                        'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                    ),
-                    'defaults' => array(
-                        'controller' => 'facebook',
-                        'action'     => 'index'
-                    ),
-                ),
-                'may_terminate' => true,
-                'child_routes' =>array(
-                    'result' => array(
-                        'type' => 'Literal',
-                        'options' => array(
-                            'route' => '/result',
-                            'defaults' => array(
-                                'controller' => 'facebook',
-                                'action'     => 'result'
-                            ),
-                        ),
-                    ),
-                ),
-            ),
             'zfcadmin' => array(
                 'type' => 'literal',
                 'options' => array(
