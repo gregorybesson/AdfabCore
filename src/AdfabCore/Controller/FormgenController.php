@@ -15,8 +15,8 @@ class FormgenController extends AbstractActionController
     public function viewAction()
     {
         $renderer = $this->serviceLocator->get('Zend\View\Renderer\RendererInterface');
-        $headScript = new PhpRenderer ();
-        $headScript->headScript ()->appendFile ( $renderer->basePath() . '/js/form/parse.form.js' );
+        $headScript = $this->getServiceLocator()->get('viewhelpermanager')->get('HeadScript');
+        $headScript->appendFile ( $renderer->basePath() . '/js/form/parse.form.js' );
 
         $formId = $this->params('form');
 
@@ -47,12 +47,12 @@ class FormgenController extends AbstractActionController
     public function createAction()
     {
         $renderer = $this->serviceLocator->get('Zend\View\Renderer\RendererInterface');
-        $headScript = new PhpRenderer ();
-        $headScript->headScript ()->appendFile ( $renderer->basePath() . '/js/form/create.form.js' );
-        $headScript->headScript ()->appendFile ( $renderer->basePath() . '/js/form/line.text.js' );
-        $headScript->headScript ()->appendFile ( $renderer->basePath() . '/js/form/add.form.js' );
-        $headScript->headScript ()->appendFile ( $renderer->basePath() . '/js/form/json.form.js' );
-        $headScript->headScript ()->appendFile ( $renderer->basePath() . '/js/form/edit.form.js' );
+        $headScript = $this->getServiceLocator()->get('viewhelpermanager')->get('HeadScript');
+        $headScript->appendFile ( $renderer->basePath() . '/js/form/create.form.js' );
+        $headScript->appendFile ( $renderer->basePath() . '/js/form/line.text.js' );
+        $headScript->appendFile ( $renderer->basePath() . '/js/form/add.form.js' );
+        $headScript->appendFile ( $renderer->basePath() . '/js/form/json.form.js' );
+        $headScript->appendFile ( $renderer->basePath() . '/js/form/edit.form.js' );
 
         //$form = '';
         return array();
