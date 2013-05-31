@@ -62,14 +62,17 @@ class Tracker
     protected $enableTracking = true;
 
     protected $enablePageTracking = true;
+	protected $enabledPageLoadTime = true;
 
     protected $allowLinker = false;
+	protected $allowHash = false;
     protected $domainName;
 
     protected $anonymizeIp = false;
 
     protected $events;
     protected $transactions;
+	protected $customVars;
 
     public function __construct ($id)
     {
@@ -105,6 +108,16 @@ class Tracker
     {
         $this->enablePageTracking = (bool) $enable_page_tracking;
     }
+	
+	public function enabledPageLoadTime ()
+    {
+        return $this->enabledPageLoadTime;
+    }
+
+    public function setEnabledPageLoadTime ($enable_page_load_time = true)
+    {
+        $this->enabledPageLoadTime = (bool) $enable_page_load_time;
+    }
 
     public function setAllowLinker($allow_linker)
     {
@@ -114,6 +127,16 @@ class Tracker
     public function getAllowLinker()
     {
         return $this->allowLinker;
+    }
+	
+	public function setAllowHash($allow_hash)
+    {
+        $this->allowHash = (bool) $allow_hash;
+    }
+
+    public function getAllowHash()
+    {
+        return $this->allowHash;
     }
 
     public function setDomainName($domain_name)
@@ -178,5 +201,19 @@ class Tracker
         }
 
         $this->transactions[$id] = $transaction;
+    }
+	
+	public function customVars ()
+    {
+        return $this->customVars;
+    }
+	
+	public function addCustomVar (CustomVar $customVar)
+    {
+        if (null === $this->customVars) {
+            $this->customVars = array();
+        }
+		
+		$this->customVars[] = $customVar;
     }
 }

@@ -205,6 +205,17 @@ class Module
                         $config = $config['adfabcore']['googleAnalytics'];
 
                         $tracker = new Analytics\Tracker($config['id']);
+						
+						if (isset($config['custom_vars'])) {
+							foreach($config['custom_vars'] as $customVar) {
+								$customVarId 		= $customVar['id'];
+								$customVarName 		= $customVar['name'];
+								$customVarValue 	= $customVar['value'];
+								$customVarOptScope  = $customVar['optScope'];
+								$customVar = new Analytics\CustomVar ($customVarId, $customVarName, $customVarValue, $customVarOptScope);
+								$tracker->addCustomVar($customVar);								
+							}
+						}
 
                         if (isset($config['domain_name'])) {
                             $tracker->setDomainName($config['domain_name']);
@@ -212,6 +223,10 @@ class Module
 
                         if (isset($config['allow_linker'])) {
                             $tracker->setAllowLinker($config['allow_linker']);
+                        }
+						
+						if (isset($config['allow_hash'])) {
+                            $tracker->setAllowHash($config['allow_hash']);
                         }
 
                         return $tracker;
