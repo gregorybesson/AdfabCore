@@ -21,7 +21,7 @@ $settings = array(
     * AdServing parameters
     */
     'adserving' => array(
-        'cat1' => 'fr_clubmetro',
+        'cat1' => 'fr_playground',
         'cat2' => '',
         'cat3' => ''
     ),
@@ -29,7 +29,7 @@ $settings = array(
     /**
     * Social messages
     */
-    'defaultShareMessage' => 'Venez jouez au jeu : __placeholder__ du Club Metro',
+    'defaultShareMessage' => 'Venez jouez au jeu : __placeholder__ de Playground',
 
     /**
      * Email transport
