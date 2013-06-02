@@ -33,14 +33,14 @@ class ConsoleController extends AbstractActionController
             $cron  = $cronjobs->run();
         }
 
-        /*if (!$response instanceof ConsoleResponse) {
+        if (!$response instanceof ConsoleResponse) {
             $response->setStatusCode(200);
+            $response->setContent('ok');
 
             return $response;
-        }*/
-
-        return 'ok';
-
+        } else {
+        	return 'ok';
+        }
     }
 
     public function getCronService()
