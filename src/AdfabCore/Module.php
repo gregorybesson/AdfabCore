@@ -3,9 +3,8 @@
 namespace AdfabCore;
 
 use Zend\Session\SessionManager;
-
 use Zend\Session\Config\SessionConfig;
-
+use Zend\Session\Container;
 use Zend\Validator\AbstractValidator;
 
 class Module
@@ -59,6 +58,18 @@ class Module
             $plugin();
         });
 
+        // Detect if the app is called from FB and store unencrypted signed_request
+        $e->getApplication()->getEventManager()->attach("dispatch", function($e) {
+       		$session = new Container('facebook');
+       		$fb = $e->getRequest()->getPost()->get('signed_request');
+       		if ($fb) {
+       			list($encoded_sig, $payload) = explode('.', $fb, 2);
+       			$sig = base64_decode(strtr($encoded_sig, '-_', '+/'));
+       			$data = json_decode(base64_decode(strtr($payload, '-_', '+/')), true);
+        		$session->offsetSet('signed_request',  $data);
+        	}
+        },100);
+        	
         /**
          * This listener gives the possibility to select the layout on module / controller / action level !
          * Just configure it in any module config or autoloaded config.
