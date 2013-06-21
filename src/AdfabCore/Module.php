@@ -68,7 +68,7 @@ class Module
        			$data = json_decode(base64_decode(strtr($payload, '-_', '+/')), true);
         		$session->offsetSet('signed_request',  $data);
         	}
-        },100);
+        },200);
         	
         /**
          * This listener gives the possibility to select the layout on module / controller / action level !
@@ -123,7 +123,7 @@ class Module
                     }
                 }
             }
-        }, 200);
+        }, 100);
     }
 
     public function getAutoloaderConfig()
