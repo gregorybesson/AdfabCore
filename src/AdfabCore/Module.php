@@ -123,7 +123,7 @@ class Module
                     }
                 }
             }
-        }, 100);
+        }, 200);
     }
 
     public function getAutoloaderConfig()
