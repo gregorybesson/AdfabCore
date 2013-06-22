@@ -1,5 +1,91 @@
 <?php
 return array(
+	'assetic_configuration' => array(
+		'buildOnRequest' => false,
+		'acceptableErrors' => array(
+			//defaults
+			\Zend\Mvc\Application::ERROR_CONTROLLER_NOT_FOUND,
+			\Zend\Mvc\Application::ERROR_CONTROLLER_INVALID,
+			\Zend\Mvc\Application::ERROR_ROUTER_NO_MATCH,
+			//allow assets when authorisation fails when using the BjyAuthorize module
+			\BjyAuthorize\Guard\Route::ERROR,
+		),
+
+		'default' => array(
+			'assets' => array(
+				'@base_css',
+				'@base_js',
+			),
+			'options' => array(
+				'mixin' => true
+			),
+		),
+
+		'modules' => array(
+			'application' => array(
+				# module root path for your css and js files
+				'root_path' => __DIR__ . '/../assets',
+				# collection od assets
+				'collections' => array(
+					'base_css' => array(
+						'assets' => array(
+							'css/bootstrap-responsive.min.css',
+							'css/ie7.css',
+							'css/ie8.css',
+							'css/ie.css',
+							'css/styles.css',
+							'css/uniform.default.css',
+							'css/bootstrap.min.css',
+						),
+						'filters' => array(
+							'CssRewriteFilter' => array(
+								'name' => 'Assetic\Filter\CssRewriteFilter'
+							)
+						),
+						'options' => array(),
+					),
+					'lib_css' => array(
+						'assets' => array(
+							'css/lib/datepicker.css',
+							'css/lib/jquery-ui-timepicker-addon.css'
+						),
+						'filters' => array(
+							'?CssRewriteFilter' => array( // filter is not active in debug mode
+								'name' => 'Assetic\Filter\CssRewriteFilter'
+							)
+						)
+					),
+					'base_js' => array(
+						'assets' => array(
+							'js/html5.js',
+							'js/lib/jquery-1.9.0.min.js',
+							'js/bootstrap.min.js',
+						),
+						/*'filters' => array(
+						 'CompilerApiFilter' => array(
+						 		'name' => 'Assetic\Filter\GoogleClosure\CompilerApiFilter'
+						 )
+						)*/
+					),
+					'base_images' => array(
+						'assets' => array(
+							'images/*/*.png',
+							'images/*/*.jpg',
+							'images/*.ico',
+							'css/fonts/*/*.woff',
+							'css/fonts/*/*.eot',
+							'css/fonts/*/*.ttf',
+							'css/fonts/*/*.svg',
+						),
+						'options' => array(
+							'move_raw' => true,
+						)
+					),
+				),
+			),
+		),
+	),
+		
     'doctrine' => array(
         'driver' => array(
             'adfabcore_entity' => array(
@@ -15,6 +101,7 @@ return array(
             )
         )
     ),
+	
     'session' => array(
         'remember_me_seconds' => 2419200,
         'use_cookies' => true,
