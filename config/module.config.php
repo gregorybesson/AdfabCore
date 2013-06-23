@@ -1,88 +1,52 @@
 <?php
 return array(
 	'assetic_configuration' => array(
-		'buildOnRequest' => false,
-		'acceptableErrors' => array(
-			//defaults
-			\Zend\Mvc\Application::ERROR_CONTROLLER_NOT_FOUND,
-			\Zend\Mvc\Application::ERROR_CONTROLLER_INVALID,
-			\Zend\Mvc\Application::ERROR_ROUTER_NO_MATCH,
-			//allow assets when authorisation fails when using the BjyAuthorize module
-			\BjyAuthorize\Guard\Route::ERROR,
-		),
-
-		'default' => array(
-			'assets' => array(
-				'@base_css',
-				'@base_js',
-			),
-			'options' => array(
-				'mixin' => true
-			),
-		),
-
 		'modules' => array(
-			'application' => array(
+			'core' => array(
 				# module root path for your css and js files
 				'root_path' => __DIR__ . '/../assets',
-				# collection od assets
+				# collection of assets
 				'collections' => array(
-					'base_css' => array(
+					'admin_css' => array(
 						'assets' => array(
 							'css/bootstrap-responsive.min.css',
-							'css/ie7.css',
-							'css/ie8.css',
-							'css/ie.css',
-							'css/styles.css',
-							'css/uniform.default.css',
+							'css/administration.css',
+							'css/style.css',
+							'http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css',
 							'css/bootstrap.min.css',
+							'css/lib/datepicker.css',
+							'css/lib/jquery-ui-timepicker-addon.css',
 						),
 						'filters' => array(
 							'CssRewriteFilter' => array(
-								'name' => 'Assetic\Filter\CssRewriteFilter'
+								'name' => 'Assetic\Filter\CssRewriteFilter',
 							)
 						),
 						'options' => array(),
 					),
-					'lib_css' => array(
-						'assets' => array(
-							'css/lib/datepicker.css',
-							'css/lib/jquery-ui-timepicker-addon.css'
-						),
-						'filters' => array(
-							'?CssRewriteFilter' => array( // filter is not active in debug mode
-								'name' => 'Assetic\Filter\CssRewriteFilter'
-							)
-						)
-					),
-					'base_js' => array(
+					'admin_js' => array(
 						'assets' => array(
 							'js/html5.js',
-							'js/lib/jquery-1.9.0.min.js',
+							'js/lib/jquery-ui-timepicker-addon.js',
+							'js/lib/bootstrap-datepicker.js',
 							'js/bootstrap.min.js',
+							'js/lib/json.js',
+							'http://code.jquery.com/ui/1.10.2/jquery-ui.js',
+							'js/admin/admin.js',
+							'js/admin/drag.js',
+							'js/jquery.min.js',
 						),
-						/*'filters' => array(
-						 'CompilerApiFilter' => array(
-						 		'name' => 'Assetic\Filter\GoogleClosure\CompilerApiFilter'
-						 )
-						)*/
-					),
-					'base_images' => array(
-						'assets' => array(
-							'images/*/*.png',
-							'images/*/*.jpg',
-							'images/*.ico',
-							'css/fonts/*/*.woff',
-							'css/fonts/*/*.eot',
-							'css/fonts/*/*.ttf',
-							'css/fonts/*/*.svg',
-						),
-						'options' => array(
-							'move_raw' => true,
-						)
-					),
+						'filters' => array(),
+						'options' => array(),
+					)
 				),
 			),
+		),
+		'routes' => array(
+			'zfcadmin/.*' => array(
+                '@admin_css',
+				'@admin_js'
+            ),
 		),
 	),
 		
