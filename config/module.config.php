@@ -34,7 +34,7 @@ return array(
 							'js/lib/bootstrap-datepicker.js',
 							'js/lib/json.js',
 							'js/admin/admin.js',
-							'js/admin/drag.js',
+							'js/admin/drag.js', 
 						),
 						'filters' => array(),
 						'options' => array(),
