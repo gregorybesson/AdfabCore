@@ -38,7 +38,6 @@ return array(
 							'http://code.jquery.com/ui/1.10.2/jquery-ui.js',
 							'js/admin/admin.js',
 							'js/admin/drag.js',
-							
 						),
 						'filters' => array(),
 						'options' => array(),
@@ -52,7 +51,6 @@ return array(
                 '@admin_css',
 				'@admin_js',
             ),
-			
 		),
 	),
 		
