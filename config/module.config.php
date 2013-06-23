@@ -11,11 +11,9 @@ return array(
 						'assets' => array(
 							'css/bootstrap.min.css',
 							'css/bootstrap-responsive.min.css',
-							'css/ie7.css',
 							'css/ie8.css',
 							'css/ie.css',
 							'css/administration.css',
-							'css/style.css',
 							'http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css',
 							'css/lib/datepicker.css',
 							'css/lib/jquery-ui-timepicker-addon.css',
@@ -47,7 +45,7 @@ return array(
 		),
 			
 		'routes' => array(
-			'zfcadmin' => array(
+			'zfcadmin.*' => array(
                 '@admin_css',
 				'@admin_js',
             ),
