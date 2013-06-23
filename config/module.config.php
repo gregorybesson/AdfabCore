@@ -405,7 +405,7 @@ return array(
             ),
         ),
     ),
-
+ 
     /*'navigation' => array(
         'admin' => array(
             'system' => array(
