@@ -46,7 +46,7 @@ return array(
 			
 		'routes' => array(
 			'zfcadmin.*' => array(
-                '@admin_css',
+                '@admin_css', 
 				'@admin_js',
             ),
 		),
