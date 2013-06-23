@@ -28,6 +28,7 @@
 		"doctrine/doctrine-orm-module" : "*",
 		"zf-commons/zfc-base" : "0.*",
 		"widmogrod/zf2-assetic-module": "dev-master"
+
     },
     "require-dev": {
         "doctrine/doctrine-orm-module": "0.*"
