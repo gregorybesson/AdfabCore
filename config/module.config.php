@@ -11,11 +11,9 @@ return array(
 						'assets' => array(
 							'css/bootstrap.min.css',
 							'css/bootstrap-responsive.min.css',
-							'css/ie7.css',
 							'css/ie8.css',
 							'css/ie.css',
 							'css/administration.css',
-							'css/style.css',
 							'http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css',
 							'css/lib/datepicker.css',
 							'css/lib/jquery-ui-timepicker-addon.css',
@@ -30,12 +28,11 @@ return array(
 					'admin_js' => array(
 						'assets' => array(
 							'js/lib/jquery-1.9.0.min.js',
-							'js/lib/html5.js',
+							'js/lib/jquery-ui.min.js',
 							'js/lib/bootstrap.min.js',
 							'js/lib/jquery-ui-timepicker-addon.js',
 							'js/lib/bootstrap-datepicker.js',
 							'js/lib/json.js',
-							'http://code.jquery.com/ui/1.10.2/jquery-ui.js',
 							'js/admin/admin.js',
 							'js/admin/drag.js',
 						),
@@ -47,8 +44,8 @@ return array(
 		),
 			
 		'routes' => array(
-			'zfcadmin' => array(
-                '@admin_css',
+			'zfcadmin.*' => array(
+                '@admin_css', 
 				'@admin_js',
             ),
 		),
