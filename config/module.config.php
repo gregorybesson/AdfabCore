@@ -25,7 +25,7 @@ return array(
 						),
 						'options' => array(),
 					),
-					'admin_js' => array(
+					'head_admin_js' => array(
 						'assets' => array(
 							'js/lib/jquery-1.9.0.min.js',
 							'js/lib/jquery-ui.min.js',
@@ -34,7 +34,7 @@ return array(
 							'js/lib/bootstrap-datepicker.js',
 							'js/lib/json.js',
 							'js/admin/admin.js',
-							'js/admin/drag.js',
+							'js/admin/drag.js', 
 						),
 						'filters' => array(),
 						'options' => array(),
@@ -46,8 +46,8 @@ return array(
 		'routes' => array(
 			'zfcadmin.*' => array(
                 '@admin_css', 
-				'@admin_js',
-            ),
+				'@head_admin_js',
+            ), 
 		),
 	),
 		
