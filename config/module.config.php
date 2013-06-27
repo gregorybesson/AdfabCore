@@ -31,10 +31,10 @@ return array(
 							'js/lib/jquery-ui.min.js',
 							'js/lib/bootstrap.min.js',
 							'js/lib/jquery-ui-timepicker-addon.js',
-							'js/lib/bootstrap-datepicker.js',
+							//'js/lib/bootstrap-datepicker.js',
 							'js/lib/json.js',
 							'js/admin/admin.js',
-							'js/admin/drag.js', 
+							'js/admin/drag.js',
 						),
 						'filters' => array(),
 						'options' => array(),
@@ -42,15 +42,15 @@ return array(
 				),
 			),
 		),
-			
+
 		'routes' => array(
 			'zfcadmin.*' => array(
-                '@admin_css', 
+                '@admin_css',
 				'@head_admin_js',
-            ), 
+            ),
 		),
 	),
-		
+
     'doctrine' => array(
         'driver' => array(
             'adfabcore_entity' => array(
@@ -66,7 +66,7 @@ return array(
             )
         )
     ),
-	
+
     'session' => array(
         'remember_me_seconds' => 2419200,
         'use_cookies' => true,
@@ -405,7 +405,7 @@ return array(
             ),
         ),
     ),
- 
+
     /*'navigation' => array(
         'admin' => array(
             'system' => array(
@@ -426,7 +426,7 @@ return array(
             ),
         ),
     ),*/
-    
+
     'navigation' => array(
         'admin' => array(
             'home' => array(
