@@ -1,6 +1,20 @@
 <?php
 return array(
 	'assetic_configuration' => array(
+		'buildOnRequest' => true,
+		'debug' => false,
+		'acceptableErrors' => array(
+			//defaults
+			\Zend\Mvc\Application::ERROR_CONTROLLER_NOT_FOUND,
+			\Zend\Mvc\Application::ERROR_CONTROLLER_INVALID,
+			\Zend\Mvc\Application::ERROR_ROUTER_NO_MATCH,
+			//allow assets when authorisation fails when using the BjyAuthorize module
+			\BjyAuthorize\Guard\Route::ERROR,
+		),
+
+		'webPath' => __DIR__ . '/../../../public/assets',
+		'cacheEnabled' => false,
+		'cachePath' => __DIR__ . '/../../../data/cache',
 		'modules' => array(
 			'core' => array(
 				# module root path for your css and js files
