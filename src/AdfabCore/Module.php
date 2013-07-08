@@ -69,7 +69,7 @@ class Module
         		$session->offsetSet('signed_request',  $data);
         	}
         },200);
-        	
+
         /**
          * This listener gives the possibility to select the layout on module / controller / action level !
          * Just configure it in any module config or autoloaded config.
@@ -213,10 +213,10 @@ class Module
                     'adfabcore_transport' => 'AdfabCore\Mail\Transport\Service\TransportFactory',
                     'AdfabCore\Analytics\Tracker' => function($sm) {
                         $config = $sm->get('config');
-                        $config = $config['adfabcore']['googleAnalytics'];
+                        $config = isset($config['adfabcore']) ? $config['adfabcore']['googleAnalytics'] : array('id' => 'UA-XXXXXXXX-X');
 
                         $tracker = new Analytics\Tracker($config['id']);
-						
+
 						if (isset($config['custom_vars'])) {
 							foreach($config['custom_vars'] as $customVar) {
 								$customVarId 		= $customVar['id'];
@@ -224,7 +224,7 @@ class Module
 								$customVarValue 	= $customVar['value'];
 								$customVarOptScope  = $customVar['optScope'];
 								$customVar = new Analytics\CustomVar ($customVarId, $customVarName, $customVarValue, $customVarOptScope);
-								$tracker->addCustomVar($customVar);								
+								$tracker->addCustomVar($customVar);
 							}
 						}
 
@@ -235,7 +235,7 @@ class Module
                         if (isset($config['allow_linker'])) {
                             $tracker->setAllowLinker($config['allow_linker']);
                         }
-						
+
 						if (isset($config['allow_hash'])) {
                             $tracker->setAllowHash($config['allow_hash']);
                         }
