@@ -32,6 +32,7 @@
 		"zendframework/zend-developer-tools" : "dev-master",
 		"jhuet/zdt-logger-module" : "0.*",
 		"zf-commons/zfc-base" : "0.*",
+		"zf-commons/zfc-admin" : "0.*",
 		"bjyoungblood/bjy-authorize" : "1.1.*"		
     },
     "require-dev": {
