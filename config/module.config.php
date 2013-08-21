@@ -455,7 +455,19 @@ return array(
 
     'view_manager' => array(
         'template_path_stack' => array(
-            __DIR__ . '/../view',
+            __DIR__ . '/../view/admin',
+        	__DIR__ . '/../view/frontend',
         ),
     ),
+		
+	'theme' => array(
+		'admin' => array(
+			'package' => 'default',
+			'design' => 'base',
+		),
+		'frontend' => array(
+			'package' => 'default',
+			'design' => 'base',
+		),
+	),
 );
