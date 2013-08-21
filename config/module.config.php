@@ -11,7 +11,7 @@ return array(
 			//allow assets when authorisation fails when using the BjyAuthorize module
 			\BjyAuthorize\Guard\Route::ERROR,
 		),
-
+ 
 		'webPath' => __DIR__ . '/../../../../public',
 		'cacheEnabled' => false,
 		'cachePath' => __DIR__ . '/../../../../data/cache',
