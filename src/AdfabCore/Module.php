@@ -43,6 +43,22 @@ class Module
         $sessionConfig->setOptions($config['session']);
         $sessionManager = new SessionManager($sessionConfig);
         $sessionManager->start();
+        
+        if(isset($config['theme'])){
+        	$viewResolverPathStack = $e->getApplication()->getServiceManager()->get('ViewTemplatePathStack');
+        	if(isset($config['theme']['admin']) && isset($config['theme']['admin']['package']) && isset($config['theme']['admin']['design'])){
+        		$pathStack = array(
+        			__DIR__ . '/../../../../../design/admin/'. $config['theme']['admin']['package'] .'/'. $config['theme']['admin']['design'],
+        		);
+        		$viewResolverPathStack->addPaths($pathStack);
+        	}
+        	if(isset($config['theme']['frontend']) && isset($config['theme']['frontend']['package']) && isset($config['theme']['frontend']['design'])){
+        		$pathStack = array(
+        				__DIR__ . '/../../../../../design/frontend/'. $config['theme']['frontend']['package'] .'/'. $config['theme']['frontend']['design'],
+        		);
+        		$viewResolverPathStack->addPaths($pathStack);
+        	}
+        }
 
         /**
          * Optional: If you later want to use namespaces, you can already store the

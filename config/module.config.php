@@ -459,4 +459,15 @@ return array(
         	__DIR__ . '/../view/frontend',
         ),
     ),
+		
+	'theme' => array(
+		'admin' => array(
+			'package' => 'default',
+			'design' => 'base',
+		),
+		'frontend' => array(
+			'package' => 'default',
+			'design' => 'base',
+		),
+	),
 );
