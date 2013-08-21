@@ -39,6 +39,37 @@ class Module
         // Start the session container
         $config = $e->getApplication()->getServiceManager()->get('config');
 
+        $sessionConfig = new SessionConfig();
+        $sessionConfig->setOptions($config['session']);
+        $sessionManager = new SessionManager($sessionConfig);
+        $sessionManager->start();
+
+        /**
+         * Optional: If you later want to use namespaces, you can already store the
+         * Manager in the shared (static) Container (=namespace) field
+         */
+        \Zend\Session\Container::setDefaultManager($sessionManager);
+
+        // Google Analytics : When the render event is triggered, we invoke the view helper to
+        // render the javascript code.
+        $e->getApplication()->getEventManager()->attach(\Zend\Mvc\MvcEvent::EVENT_RENDER, function(\Zend\Mvc\MvcEvent $e) use ($serviceManager) {
+            $view   = $serviceManager->get('ViewHelperManager');
+            $plugin = $view->get('googleAnalytics');
+            $plugin();
+        });
+
+        // Detect if the app is called from FB and store unencrypted signed_request
+        $e->getApplication()->getEventManager()->attach("dispatch", function($e) {
+       		$session = new Container('facebook');
+       		$fb = $e->getRequest()->getPost()->get('signed_request');
+       		if ($fb) {
+       			list($encoded_sig, $payload) = explode('.', $fb, 2);
+       			$sig = base64_decode(strtr($encoded_sig, '-_', '+/'));
+       			$data = json_decode(base64_decode(strtr($payload, '-_', '+/')), true);
+        		$session->offsetSet('signed_request',  $data);
+        	}
+        },200);
+
         /**
          * This listener gives the possibility to select the layout on module / controller / action level !
          * Just configure it in any module config or autoloaded config.
@@ -93,42 +124,6 @@ class Module
                 }
             }
         }, 100);
-        
-        if (!$e->getRequest() instanceof HttpRequest) {
-         return;
-        }
-        
-        
-        $sessionConfig = new SessionConfig();
-        $sessionConfig->setOptions($config['session']);
-        $sessionManager = new SessionManager($sessionConfig);
-        $sessionManager->start();
-        
-        /**
-         * Optional: If you later want to use namespaces, you can already store the
-         * Manager in the shared (static) Container (=namespace) field
-        */
-        \Zend\Session\Container::setDefaultManager($sessionManager);
-        
-        // Google Analytics : When the render event is triggered, we invoke the view helper to
-        // render the javascript code.
-        $e->getApplication()->getEventManager()->attach(\Zend\Mvc\MvcEvent::EVENT_RENDER, function(\Zend\Mvc\MvcEvent $e) use ($serviceManager) {
-        	$view   = $serviceManager->get('ViewHelperManager');
-        	$plugin = $view->get('googleAnalytics');
-        	$plugin();
-        });
-        
-    	// Detect if the app is called from FB and store unencrypted signed_request
-    	$e->getApplication()->getEventManager()->attach("dispatch", function($e) {
-    		$session = new Container('facebook');
-    		$fb = $e->getRequest()->getPost()->get('signed_request');
-    		if ($fb) {
-    			list($encoded_sig, $payload) = explode('.', $fb, 2);
-    			$sig = base64_decode(strtr($encoded_sig, '-_', '+/'));
-    			$data = json_decode(base64_decode(strtr($payload, '-_', '+/')), true);
-    			$session->offsetSet('signed_request',  $data);
-    		}
-    	},200);
     }
 
     public function getAutoloaderConfig()
