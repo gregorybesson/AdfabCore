@@ -195,6 +195,30 @@ class Module
 
                 return $helper;
                 },
+                
+                'adminAssetPath' => function($sm) {
+                	$config = $sm->getServiceLocator()->has('Config') ? $sm->getServiceLocator()->get('Config') : array();
+                	$helper  = new View\Helper\AdminAssetPath;
+                	if (isset($config['view_manager']) && isset($config['view_manager']['base_path'])) {
+                		$basePath = $config['view_manager']['base_path'];
+                	} else {
+                		$basePath = $sm->getServiceLocator()->get('Request')->getBasePath();
+                	}
+                	$helper->setBasePath($basePath);
+                	return $helper;
+                },
+                
+                'frontendAssetPath' => function($sm) {
+                	$config = $sm->getServiceLocator()->has('Config') ? $sm->getServiceLocator()->get('Config') : array();
+                	$helper  = new View\Helper\FrontendAssetPath;
+                	if (isset($config['view_manager']) && isset($config['view_manager']['base_path'])) {
+                		$basePath = $config['view_manager']['base_path'];
+                	} else {
+                		$basePath = $sm->getServiceLocator()->get('Request')->getBasePath();
+                	}
+                	$helper->setBasePath($basePath);
+                	return $helper;
+                }
             ),
         );
 
