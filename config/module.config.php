@@ -57,7 +57,7 @@ return array(
 						),
 						'filters' => array(),
 						'options' => array(
-							'output' => 'zfcadmin/js/main',
+							'output' => 'zfcadmin/js/head_main',
 						),
 					),
 					'admin_images' => array(
@@ -147,7 +147,7 @@ return array(
 						),
 						'filters' => array(),
 						'options' => array(
-							'output' => 'frontend/js/main',
+							'output' => 'frontend/js/head_main',
 						),
 					),
 					'frontend_images' => array(
