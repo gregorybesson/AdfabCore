@@ -1,5 +1,5 @@
 <?php
-
+ 
 $dbParams = array(
 	'database'  => 'appcore',
 	'username'  => 'root',
