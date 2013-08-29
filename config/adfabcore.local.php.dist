@@ -46,14 +46,14 @@ $settings = array(
     ),
 
     'ckeditor' => array(
-        'BasePath' =>'js/lib/ckeditor',
+        'BasePath' =>'zfcadmin/js/lib/ckeditor',
         'Width'      => "100%",
         'Height'     => "340",
         'Language'   => 'fr',
         'Color'      => '#F7F7F7',
-        'stylesSet'  => 'custom_styles:/js/ckeditor-custom/ckeditor-styles.js',
-        'templates_files'  => array('/js/ckeditor-custom/ckeditor-templates.js'),
-        'contentsCss'  => array('/css/ckeditor-custom/ckeditor-css.css'),
+        'stylesSet'  => 'custom_styles:/zfcadmin/js/ckeditor-custom/ckeditor-styles.js',
+        'templates_files'  => array('/zfcadmin/js/ckeditor-custom/ckeditor-templates.js'),
+        'contentsCss'  => array('/zfcadmin/css/ckeditor-custom/ckeditor-css.css'),
 
         // Full toolbars
         'Toolbar'    => array(
