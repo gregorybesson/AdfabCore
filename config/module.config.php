@@ -166,7 +166,7 @@ return array(
                 '@admin_css',
 				'@head_admin_js',
             ),
-			'home.*' => array(
+			'frontend.*' => array(
 				'@frontend_css',
 				'@head_frontend_js',
 			),
