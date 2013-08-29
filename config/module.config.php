@@ -1,5 +1,11 @@
 <?php
 return array(
+	'service_manager' => array(
+		'factories' => array(
+			// this definition has to be done here to override Wilmogrod Assetic declaration
+			'AsseticBundle\Service' => 'AdfabCore\Assetic\ServiceFactory',
+		),
+	),
 	'assetic_configuration' => array(
 		'buildOnRequest' => true,
 		'debug' => false,
@@ -16,42 +22,140 @@ return array(
 		'cacheEnabled' => false,
 		'cachePath' => __DIR__ . '/../../../../data/cache',
 		'modules' => array(
-			'core' => array(
+			'admin' => array(
 				# module root path for your css and js files
-				'root_path' => __DIR__ . '/../assets',
+				'root_path' => array(
+						__DIR__ . '/../view/admin/assets',
+				),
 				# collection of assets
 				'collections' => array(
 					'admin_css' => array(
 						'assets' => array(
-							'css/bootstrap.min.css',
-							'css/bootstrap-responsive.min.css',
-							'css/ie8.css',
-							'css/ie.css',
-							'css/administration.css',
-							'http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css',
-							'css/lib/datepicker.css',
-							'css/lib/jquery-ui-timepicker-addon.css',
+							'bootstrap.min.css' 			 => 'css/bootstrap.min.css',
+							'bootstrap-responsive.min.css'   => 'css/bootstrap-responsive.min.css',
+							'ie8.css' 						 => 'css/ie8.css',
+							'ie.css' 						 => 'css/ie.css',
+							'administration.css' 			 => 'css/administration.css',
+							'jquery-ui.css' 				 => 'http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css',
+							'datepicker.css' 				 => 'css/lib/datepicker.css',
+							'jquery-ui-timepicker-addon.css' => 'css/lib/jquery-ui-timepicker-addon.css',
 						),
-						'filters' => array(
-							'CssRewriteFilter' => array(
-								'name' => 'Assetic\Filter\CssRewriteFilter',
-							)
+						'filters' => array(),
+						'options' => array(
+							'output' => 'zfcadmin/css/main'
 						),
-						'options' => array(),
 					),
 					'head_admin_js' => array(
 						'assets' => array(
-							'js/lib/jquery-1.9.0.min.js',
-							'js/lib/jquery-ui.min.js',
-							'js/lib/bootstrap.min.js',
-							'js/lib/jquery-ui-timepicker-addon.js',
-							//'js/lib/bootstrap-datepicker.js',
-							'js/lib/json.js',
-							'js/admin/admin.js',
-							'js/admin/drag.js',
+							'jquery-1.9.0.min.js' 			=> 'js/lib/jquery-1.9.0.min.js',
+							'jquery-ui.min.js' 				=> 'js/lib/jquery-ui.min.js',
+							'bootstrap.min.js'				=> 'js/lib/bootstrap.min.js',
+							'jquery-ui-timepicker-addon.js' => 'js/lib/jquery-ui-timepicker-addon.js',
+							'json.js'						=> 'js/lib/json.js',
+							'admin.js'						=> 'js/admin/admin.js',
+							'drag.js'						=> 'js/admin/drag.js',
 						),
 						'filters' => array(),
-						'options' => array(),
+						'options' => array(
+							'output' => 'zfcadmin/js/main',
+						),
+					),
+					'admin_images' => array(
+						'assets' => array(
+							'images/**/*.jpg',
+							'images/**/*.png',
+							
+						),
+						'options' => array(
+							'move_raw' => true,
+							'output' => 'zfcadmin',
+						)
+					),
+					'admin_fonts' => array(
+		 				'assets' => array(
+							'fonts/**/*.eot',
+							'fonts/**/*.svg',
+							'fonts/**/*.ttf',
+							'fonts/**/*.woff',
+						),
+						'options' => array(
+							'move_raw' => true,
+							'output' => 'zfcadmin',
+						)
+					),
+				),
+			),
+			'frontend' => array(
+				# module root path for your css and js files
+				'root_path' => array(
+					__DIR__ . '/../view/frontend/assets',
+				),
+				# collection of assets
+				'collections' => array(
+					'frontend_css' => array(
+						'assets' => array(
+							'ie7.css' 				 => 'css/ie7.css',
+							'ie8.css' 				 => 'css/ie8.css',
+							'ie.css' 				 => 'css/ie.css',
+							'styles.css' 			 => 'css/styles.css',
+							'uniform.default.css' 	 => 'css/uniform.default.css',
+						),
+						'filters' => array(),
+						'options' => array(
+							'output' => 'frontend/css/main'
+						),
+					),
+					'head_frontend_js' => array(
+						'assets' => array(
+							//'html5.js' => 'js/html5.js',
+							//'pie.js' => 'js/lib/pie.js',
+							//'selectivizr-min.js' => 'js/lib/selectivizr-min.js',
+							'bootstrap.min.js' => 'js/bootstrap.min.js',
+							'games.js' => 'js/games.js',
+							'share.js' => 'js/share.js',
+							'users.js' => 'js/users.js',
+							'script.js' => 'js/script.js',
+							'functions.js' => 'js/functions.js',
+							'sniffer.js' => 'js/sniffer.js',
+							'jquery.timer.js' => 'js/lib/jquery.timer.js',
+							'wScratchpad.js' => 'js/lib/wScratchPad.js',
+							'jquery.limit-1.2.source.js' => 'js/lib/jquery.limit-1.2.source.js',
+							'jquery.uniform-2.0.js' => 'js/lib/jquery.uniform-2.0.js',
+							'bowser.min.js' => 'js/lib/bowser.min.js',
+							'jquery.nivo.slider.js' => 'js/lib/jquery.nivo.slider.js',
+							'jquery.validate.min.js' => 'js/lib/jquery.validate.min.js',
+							'mousewheel.js' => 'js/lib/mousewheel.js',
+							'jscrollpane.js' => 'js/lib/jscrollpane.js',
+							'popin.js' => 'js/popin.js',
+							'loader.js' => 'js/loader.js',
+							'jquery-1.9.0.min.js' => 'js/lib/jquery-1.9.0.min.js',
+						),
+						'filters' => array(),
+						'options' => array(
+							'output' => 'frontend/js/main',
+						),
+					),
+					'frontend_images' => array(
+						'assets' => array(
+							'images/**/*.png',
+							'images/**/*.jpg',
+						),
+						'options' => array(
+							'move_raw' => true,
+							'output' => 'frontend',
+						)
+					),
+					'frontend_fonts' => array(
+						'assets' => array(
+							'css/fonts/**/*.eot',
+							'css/fonts/**/*.svg',
+							'css/fonts/**/*.ttf',
+							'css/fonts/**/*.woff',
+						),
+						'options' => array(
+							'move_raw' => true,
+							'output' => 'frontend'
+						)
 					),
 				),
 			),
@@ -62,6 +166,10 @@ return array(
                 '@admin_css',
 				'@head_admin_js',
             ),
+			'home.*' => array(
+				'@frontend_css',
+				'@head_frontend_js',
+			),
 		),
 	),
 

@@ -44,19 +44,43 @@ class Module
         $sessionManager = new SessionManager($sessionConfig);
         $sessionManager->start();
         
-        if(isset($config['theme'])){
+            // Design management : template and assets management
+        if(isset($config['design'])){
+        	$configHasChanged = false;
         	$viewResolverPathStack = $e->getApplication()->getServiceManager()->get('ViewTemplatePathStack');
-        	if(isset($config['theme']['admin']) && isset($config['theme']['admin']['package']) && isset($config['theme']['admin']['design'])){
-        		$pathStack = array(
-        			__DIR__ . '/../../../../../design/admin/'. $config['theme']['admin']['package'] .'/'. $config['theme']['admin']['design'],
-        		);
+        	if(isset($config['design']['admin']) && isset($config['design']['admin']['package']) && isset($config['design']['admin']['theme'])){
+        		$adminPath = __DIR__ . '/../../../../../design/admin/'. $config['design']['admin']['package'] .'/'. $config['design']['admin']['theme'];
+        		$pathStack = array($adminPath);
+        		
+        		// Assetic pour les CSS
+        		$config['assetic_configuration']['modules']['admin']['root_path'][] = $adminPath . '/assets';
+        		// Resolver des templates phtml
         		$viewResolverPathStack->addPaths($pathStack);
+        		
+        		$filename = $adminPath . '/assets.php';
+        		if(is_file($filename) && is_readable($filename)){
+        			$configAssets = new \Zend\Config\Config(include $filename);
+        			$config = array_replace_recursive($config, $configAssets->toArray());
+        			$configHasChanged = true;
+        		}
         	}
-        	if(isset($config['theme']['frontend']) && isset($config['theme']['frontend']['package']) && isset($config['theme']['frontend']['design'])){
-        		$pathStack = array(
-        				__DIR__ . '/../../../../../design/frontend/'. $config['theme']['frontend']['package'] .'/'. $config['theme']['frontend']['design'],
-        		);
+        	if(isset($config['design']['frontend']) && isset($config['design']['frontend']['package']) && isset($config['design']['frontend']['theme'])){
+        		$frontendPath = __DIR__ . '/../../../../../design/frontend/'. $config['design']['frontend']['package'] .'/'. $config['design']['frontend']['theme'];
+        		$pathStack = array($frontendPath);
+        		// Assetic pour les CSS
+        		$config['assetic_configuration']['modules']['frontend']['root_path'][] = $frontendPath . '/assets';
         		$viewResolverPathStack->addPaths($pathStack);
+        		
+        		$filename = $frontendPath . '/assets.php';
+        		if(is_file($filename) && is_readable($filename)){
+        			$configAssets = new \Zend\Config\Config(include $filename);
+        			$config = array_replace_recursive($configAssets->toArray(), $config);
+        			$configHasChanged = true;
+        		}
+        	}
+        	if($configHasChanged){
+        		$e->getApplication()->getServiceManager()->setAllowOverride(true);
+        		$e->getApplication()->getServiceManager()->setService('config', $config);
         	}
         }
 
