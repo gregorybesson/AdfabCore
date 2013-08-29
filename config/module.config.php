@@ -17,7 +17,7 @@ return array(
 			//allow assets when authorisation fails when using the BjyAuthorize module
 			\BjyAuthorize\Guard\Route::ERROR,
 		),
- 
+
 		'webPath' => __DIR__ . '/../../../../public',
 		'cacheEnabled' => false,
 		'cachePath' => __DIR__ . '/../../../../data/cache',
@@ -64,7 +64,7 @@ return array(
 						'assets' => array(
 							'images/**/*.jpg',
 							'images/**/*.png',
-							
+
 						),
 						'options' => array(
 							'move_raw' => true,
@@ -77,6 +77,21 @@ return array(
 							'fonts/**/*.svg',
 							'fonts/**/*.ttf',
 							'fonts/**/*.woff',
+						),
+						'options' => array(
+							'move_raw' => true,
+							'output' => 'zfcadmin',
+						)
+					),
+					'admin_ckeditor' => array(
+						'assets' => array(
+							'js/lib/ckeditor/*',
+							'js/lib/ckeditor/**/*',
+							'js/lib/ckeditor/**/**/*',
+							'js/lib/ckeditor/**/**/**/*',
+							'js/ckeditor-custom/*',
+							'js/ckeditor-custom/**/*',
+							'css/ckeditor-custom/*',
 						),
 						'options' => array(
 							'move_raw' => true,
@@ -567,7 +582,7 @@ return array(
         	__DIR__ . '/../view/frontend',
         ),
     ),
-		
+
 	'theme' => array(
 		'admin' => array(
 			'package' => 'default',
