@@ -17,7 +17,7 @@ return array(
 			//allow assets when authorisation fails when using the BjyAuthorize module
 			\BjyAuthorize\Guard\Route::ERROR,
 		),
-
+ 
 		'webPath' => __DIR__ . '/../../../../public',
 		'cacheEnabled' => false,
 		'cachePath' => __DIR__ . '/../../../../data/cache',
@@ -64,7 +64,7 @@ return array(
 						'assets' => array(
 							'images/**/*.jpg',
 							'images/**/*.png',
-
+							
 						),
 						'options' => array(
 							'move_raw' => true,
@@ -77,21 +77,6 @@ return array(
 							'fonts/**/*.svg',
 							'fonts/**/*.ttf',
 							'fonts/**/*.woff',
-						),
-						'options' => array(
-							'move_raw' => true,
-							'output' => 'zfcadmin',
-						)
-					),
-					'admin_ckeditor' => array(
-						'assets' => array(
-							'js/lib/ckeditor/*',
-							'js/lib/ckeditor/**/*',
-							'js/lib/ckeditor/**/**/*',
-							'js/lib/ckeditor/**/**/**/*',
-							'js/ckeditor-custom/*',
-							'js/ckeditor-custom/**/*',
-							'css/ckeditor-custom/*',
 						),
 						'options' => array(
 							'move_raw' => true,
@@ -162,10 +147,10 @@ return array(
 					),
 					'frontend_fonts' => array(
 						'assets' => array(
-							'fonts/**/*.eot',
-							'fonts/**/*.svg',
-							'fonts/**/*.ttf',
-							'fonts/**/*.woff',  
+							'css/fonts/**/*.eot',
+							'css/fonts/**/*.svg',
+							'css/fonts/**/*.ttf',
+							'css/fonts/**/*.woff',
 						),
 						'options' => array(
 							'move_raw' => true,
@@ -181,7 +166,7 @@ return array(
                 '@admin_css',
 				'@head_admin_js',
             ),
-			'home.*' => array(
+			'frontend.*' => array(
 				'@frontend_css',
 				'@head_frontend_js',
 			),
@@ -582,7 +567,7 @@ return array(
         	__DIR__ . '/../view/frontend',
         ),
     ),
-
+		
 	'theme' => array(
 		'admin' => array(
 			'package' => 'default',
