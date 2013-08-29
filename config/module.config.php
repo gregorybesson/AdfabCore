@@ -165,7 +165,7 @@ return array(
 							'fonts/**/*.eot',
 							'fonts/**/*.svg',
 							'fonts/**/*.ttf',
-							'fonts/**/*.woff',
+							'fonts/**/*.woff',  
 						),
 						'options' => array(
 							'move_raw' => true,
