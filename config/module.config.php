@@ -162,10 +162,10 @@ return array(
 					),
 					'frontend_fonts' => array(
 						'assets' => array(
-							'css/fonts/**/*.eot',
-							'css/fonts/**/*.svg',
-							'css/fonts/**/*.ttf',
-							'css/fonts/**/*.woff',
+							'fonts/**/*.eot',
+							'fonts/**/*.svg',
+							'fonts/**/*.ttf',
+							'fonts/**/*.woff',
 						),
 						'options' => array(
 							'move_raw' => true,

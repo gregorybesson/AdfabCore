@@ -8,7 +8,7 @@ use Zend\View\Exception;
 /**
  * Helper for retrieving the base path.
  */
-class FrontendAssetPath extends BasePath
+class FrontendAssetPath extends AbstractHelper
 {
     /**
      * Base path
