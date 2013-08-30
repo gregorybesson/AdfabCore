@@ -110,6 +110,7 @@ return array(
 							//'html5.js' => 'js/html5.js',
 							//'pie.js' => 'js/lib/pie.js',
 							//'selectivizr-min.js' => 'js/lib/selectivizr-min.js',
+							'jquery-1.9.0.min.js' => 'js/lib/jquery-1.9.0.min.js',
 							'bootstrap.min.js' => 'js/bootstrap.min.js',
 							'games.js' => 'js/games.js',
 							'share.js' => 'js/share.js',
@@ -128,7 +129,6 @@ return array(
 							'jscrollpane.js' => 'js/lib/jscrollpane.js',
 							'popin.js' => 'js/popin.js',
 							'loader.js' => 'js/loader.js',
-							'jquery-1.9.0.min.js' => 'js/lib/jquery-1.9.0.min.js',
 						),
 						'filters' => array(),
 						'options' => array(
@@ -147,10 +147,10 @@ return array(
 					),
 					'frontend_fonts' => array(
 						'assets' => array(
-							'css/fonts/**/*.eot',
-							'css/fonts/**/*.svg',
-							'css/fonts/**/*.ttf',
-							'css/fonts/**/*.woff',
+							'fonts/**/*.eot',
+							'fonts/**/*.svg',
+							'fonts/**/*.ttf',
+							'fonts/**/*.woff',
 						),
 						'options' => array(
 							'move_raw' => true,
