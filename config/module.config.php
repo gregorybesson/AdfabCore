@@ -576,14 +576,14 @@ return array(
         ),
     ),
 
-	'theme' => array(
+	'design' => array(
 		'admin' => array(
 			'package' => 'default',
-			'design' => 'base',
+			'theme' => 'base',
 		),
 		'frontend' => array(
 			'package' => 'default',
-			'design' => 'base',
+			'theme' => 'base',
 		),
 	),
 );
