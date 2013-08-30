@@ -170,6 +170,10 @@ return array(
 				'@frontend_css',
 				'@head_frontend_js',
 			),
+			'zfcuser.*' => array(
+				'@frontend_css',
+				'@head_frontend_js',
+			),
 		),
 	),
 
