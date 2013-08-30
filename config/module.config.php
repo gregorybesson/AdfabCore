@@ -17,7 +17,7 @@ return array(
 			//allow assets when authorisation fails when using the BjyAuthorize module
 			\BjyAuthorize\Guard\Route::ERROR,
 		),
- 
+
 		'webPath' => __DIR__ . '/../../../../public',
 		'cacheEnabled' => false,
 		'cachePath' => __DIR__ . '/../../../../data/cache',
@@ -64,7 +64,7 @@ return array(
 						'assets' => array(
 							'images/**/*.jpg',
 							'images/**/*.png',
-							
+
 						),
 						'options' => array(
 							'move_raw' => true,
@@ -200,50 +200,54 @@ return array(
     ),
     'router' => array(
         'routes' => array(
-            'elfinder' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route' => '/elfinder',
-                    'defaults' => array(
-                        'controller' => 'elfinder',
-                        'action'     => 'index',
-                    ),
-                ),
-                'may_terminate' => true,
-                'child_routes' => array(
-                    'connector' => array(
-                        'type' => 'Literal',
-                        'options' => array(
-                            'route' => '/connector',
-                            'defaults' => array(
-                                'controller' => 'elfinder',
-                                'action'     => 'connector',
-                            ),
-                        ),
-                    ),
-                    'ckeditor' => array(
-                        'type' => 'Literal',
-                        'options' => array(
-                            'route' => '/ckeditor',
-                            'defaults' => array(
-                                'controller' => 'elfinder',
-                                'action'     => 'ckeditor',
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-            // Give the possibility to call Cron from browser
-            'cron' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route' => '/cron',
-                    'defaults' => array(
-                        'controller' => 'adfabcore_console',
-                        'action' => 'cron'
-                    ),
-                ),
-            ),
+        	'frontend' => array(
+        		'child_routes' => array(
+		            'elfinder' => array(
+		                'type' => 'Literal',
+		                'options' => array(
+		                    'route' => 'elfinder',
+		                    'defaults' => array(
+		                        'controller' => 'elfinder',
+		                        'action'     => 'index',
+		                    ),
+		                ),
+		                'may_terminate' => true,
+		                'child_routes' => array(
+		                    'connector' => array(
+		                        'type' => 'Literal',
+		                        'options' => array(
+		                            'route' => '/connector',
+		                            'defaults' => array(
+		                                'controller' => 'elfinder',
+		                                'action'     => 'connector',
+		                            ),
+		                        ),
+		                    ),
+		                    'ckeditor' => array(
+		                        'type' => 'Literal',
+		                        'options' => array(
+		                            'route' => '/ckeditor',
+		                            'defaults' => array(
+		                                'controller' => 'elfinder',
+		                                'action'     => 'ckeditor',
+		                            ),
+		                        ),
+		                    ),
+		                ),
+		            ),
+		            // Give the possibility to call Cron from browser
+		            'cron' => array(
+		                'type' => 'Literal',
+		                'options' => array(
+		                    'route' => 'cron',
+		                    'defaults' => array(
+		                        'controller' => 'adfabcore_console',
+		                        'action' => 'cron'
+		                    ),
+		                ),
+		            ),
+        		),
+        	),
             'zfcadmin' => array(
                 'type' => 'literal',
                 'options' => array(
@@ -571,7 +575,7 @@ return array(
         	__DIR__ . '/../view/frontend',
         ),
     ),
-		
+
 	'theme' => array(
 		'admin' => array(
 			'package' => 'default',
