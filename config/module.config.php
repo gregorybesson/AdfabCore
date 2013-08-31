@@ -178,15 +178,11 @@ return array(
 		),
 
 		'routes' => array(
-			'zfcadmin.*' => array(
+			'admin.*' => array(
                 '@admin_css',
 				'@head_admin_js',
             ),
 			'frontend.*' => array(
-				'@frontend_css',
-				'@head_frontend_js',
-			),
-			'zfcuser.*' => array(
 				'@frontend_css',
 				'@head_frontend_js',
 			),
