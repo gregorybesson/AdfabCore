@@ -4,8 +4,11 @@ return array(
 		'factories' => array(
 			// this definition has to be done here to override Wilmogrod Assetic declaration
 			'AsseticBundle\Service' => 'AdfabCore\Assetic\ServiceFactory',
+			'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
+			'nav' => 'Zend\Navigation\Service\DefaultNavigationFactory',
 		),
 	),
+
 	'assetic_configuration' => array(
 		'buildOnRequest' => true,
 		'debug' => false,
@@ -212,7 +215,16 @@ return array(
     ),
     'router' => array(
         'routes' => array(
-                    	'frontend' => array(
+            'frontend' => array(
+            	'type' => 'Zend\Mvc\Router\Http\Literal',
+            	'options' => array(
+            		'route'    => '/',
+            		'defaults' => array(
+         				'controller' => 'AdfabCore\Controller\Dashboard',
+            			'action'     => 'index',
+            		),
+            	),
+           		'may_terminate' => true,
         		'child_routes' => array(
 		            'elfinder' => array(
 		                'type' => 'Literal',
@@ -262,6 +274,7 @@ return array(
         	),
             'admin' => array(
                 'type' => 'Literal',
+            	'priority' => 1000,
                 'options' => array(
                     'route'    => '/admin',
                     'defaults' => array(
@@ -521,6 +534,18 @@ return array(
         )
     ),
 
+	'core_layout' => array(
+        'AdfabCore' => array(
+            'default_layout' => 'layout/homepage-2columns-right',
+            'controllers' => array(
+            	'AdfabCore\Controller\Dashboard'   => array(
+            		'default_layout' => 'layout/admin',
+            	),	
+            ),
+        ),
+	),
+		
+		
     'controllers' => array(
         'invokables' => array(
             'AdfabCore\Controller\Dashboard' => 'AdfabCore\Controller\DashboardController',
@@ -582,13 +607,18 @@ return array(
     ),
 
     'view_manager' => array(
+        'display_not_found_reason' => true,
+        'display_exceptions'       => true,
+        'doctype'                  => 'XHTML5',
+        'not_found_template'       => 'error/404',
+        'exception_template'       => 'error/index',
         'template_path_stack' => array(
             __DIR__ . '/../view/admin',
-        	__DIR__ . '/../view/frontend',
+            __DIR__ . '/../view/frontend',
         ),
     ),
 		
-	'design' => array(
+	/*'design' => array(
 		'admin' => array(
 			'package' => 'default',
 			'theme' => 'base',
@@ -597,5 +627,5 @@ return array(
 			'package' => 'default',
 			'theme' => 'base',
 		),
-	),
+	),*/
 );

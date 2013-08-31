@@ -8,8 +8,7 @@ return array(
    		'Jhu\ZdtLoggerModule',
     	'AsseticBundle',
     	'ZfcBase',
-   		'AdfabCore',
-        'Application',
+   		'AdfabCore'
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(

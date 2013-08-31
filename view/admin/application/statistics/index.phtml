@@ -1,0 +1,71 @@
+<!-- STATS -->
+<h1><?php echo $this->translate('Statistiques'); ?></h1>
+
+<div id="statistics">
+
+<a href="<?php echo $this->url('admin/applicationadmin/download');?>">
+	Export CSV
+</a>
+
+
+	<table class="table">
+	    <tr>
+	        <td><b><?php echo $this->translate('Nombre d\'inscrits actifs'); ?></b></td>
+	        <td><?php echo $this->activeUser; ?></td>
+	    </tr>
+	    <tr>
+	        <td><b><?php echo $this->translate('Nombre d\'inscrits suspendus'); ?></b></td>
+	        <td><?php echo $this->inactiveUser; ?></td>
+	    </tr>
+	    <tr>
+	        <td><b><?php echo $this->translate('Nombre d\'inscrits homme'); ?></b></td>
+	        <td><?php echo $this->maleUser; ?></td>
+	    </tr>
+	    <tr>
+	        <td><b><?php echo $this->translate('Nombre d\'inscrits femme'); ?></b></td>
+	        <td><?php echo $this->femaleUser; ?></td>
+	    </tr>
+	    <tr>
+	        <td><b><?php echo $this->translate('Nombre d\'abonnés à la newsletter'); ?></b></td>
+	        <td><?php echo $this->optinUser; ?></td>
+	    </tr>
+	    <!--
+	    <tr>
+	        <td><b><?php echo $this->translate('Nombre d\'abonnés à la newsletter Partenaire'); ?></b></td>
+	        <td><?php echo $this->optinUserPartner; ?></td>
+	    </tr>
+	    -->
+	    <tr>
+	        <td><b><?php echo $this->translate('Nombre de Jeux actifs'); ?></b></td>
+	        <td><?php echo $this->activeGame; ?></td>
+	    </tr>
+	    <tr>
+	        <td><b><?php echo $this->translate('Nombre d\'articles actifs'); ?></b></td>
+	        <td><?php echo $this->activePage; ?></td>
+	    </tr>
+	    <tr>
+	        <td><b><?php echo $this->translate('Nombre moyen de participants / jeu'); ?></b></td>
+	         <td><?php echo number_format($this->userPerGames, 2); ?></td>
+	    </tr>
+	    <tr>
+	        <td><b><?php echo $this->translate('Nombre moyen de partages / jeu'); ?></b></td>
+	        <td><?php echo number_format($this->sharePerGames, 2); ?></td>
+	    </tr>
+
+
+    	<?php foreach($this->userPerBadges as $userPerBadges): ?>
+    		<tr>
+	    		 <td>
+	    		 	<b><?php echo $this->translate($userPerBadges['badge']).' '.$userPerBadges['level'] ?></b>
+	    		 </td>
+
+	    		 <td>
+	    		 	<?php echo $userPerBadges['user']; ?>
+	    		 </td>
+	    	</tr>
+    	<?php endforeach; ?>
+
+
+	</table>
+
+</div>
