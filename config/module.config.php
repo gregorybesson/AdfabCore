@@ -17,7 +17,7 @@ return array(
 			//allow assets when authorisation fails when using the BjyAuthorize module
 			\BjyAuthorize\Guard\Route::ERROR,
 		),
- 
+
 		'webPath' => __DIR__ . '/../../../../public',
 		'cacheEnabled' => false,
 		'cachePath' => __DIR__ . '/../../../../data/cache',
@@ -48,7 +48,7 @@ return array(
 					'head_admin_js' => array(
 						'assets' => array(
 							'jquery-1.9.0.min.js' 			=> 'js/lib/jquery-1.9.0.min.js',
-							'jquery-ui.js' 					=> 'http://code.jquery.com/ui/1.10.2/jquery-ui.js',
+							'jquery-ui.min.js' 				=> 'js/lib/jquery-ui.min.js',
 							'bootstrap.min.js'				=> 'js/lib/bootstrap.min.js',
 							'jquery-ui-timepicker-addon.js' => 'js/lib/jquery-ui-timepicker-addon.js',
 							'json.js'						=> 'js/lib/json.js',
@@ -64,7 +64,7 @@ return array(
 						'assets' => array(
 							'images/**/*.jpg',
 							'images/**/*.png',
-							
+
 						),
 						'options' => array(
 							'move_raw' => true,
@@ -85,9 +85,13 @@ return array(
 					),
 					'admin_ckeditor' => array(
 						'assets' => array(
+							'js/lib/ckeditor/*',
 							'js/lib/ckeditor/**/*',
+							'js/lib/ckeditor/**/**/*',
+							'js/lib/ckeditor/**/**/**/*',
+							'js/ckeditor-custom/*',
 							'js/ckeditor-custom/**/*',
-							'css/ckeditor-custom/**/*',
+							'css/ckeditor-custom/*',
 						),
 						'options' => array(
 							'move_raw' => true,
@@ -120,27 +124,27 @@ return array(
 						'assets' => array(
 							//'html5.js' => 'js/html5.js',
 							//'pie.js' => 'js/lib/pie.js',
-							//'selectivizr-min.js' 	=> 'js/lib/selectivizr-min.js',
-							'jquery-1.9.0.min.js' 	=> 'js/lib/jquery-1.9.0.min.js',
-							'jquery-ui.js' 			=> 'http://code.jquery.com/ui/1.10.2/jquery-ui.js',
-							'bowser.min.js' 		=> 'js/lib/bowser.min.js',
-							'loader.js' 			=> 'js/loader.js',
-							'popin.js' 				=> 'js/popin.js',
-							'jscrollpane.js' 		=> 'js/lib/jscrollpane.js',
-							'mousewheel.js' 		=> 'js/lib/mousewheel.js',
+							//'selectivizr-min.js' => 'js/lib/selectivizr-min.js',
+							'jquery-1.9.0.min.js' => 'js/lib/jquery-1.9.0.min.js',
+							'jquery-ui.js' => 'http://code.jquery.com/ui/1.10.2/jquery-ui.js',
+							'bowser.min.js' => 'js/lib/bowser.min.js',
+							'loader.js' => 'js/loader.js',
+							'popin.js' => 'js/popin.js',
+							'jscrollpane.js' => 'js/lib/jscrollpane.js',
+							'mousewheel.js' => 'js/lib/mousewheel.js',
 							'jquery.validate.min.js'=> 'js/lib/jquery.validate.min.js',
 							'jquery.nivo.slider.js' => 'js/lib/jquery.nivo.slider.js',
 							'jquery.uniform-2.0.js' => 'js/lib/jquery.uniform-2.0.js',
 							'jquery.limit-1.2.source.js' => 'js/lib/jquery.limit-1.2.source.js',
-							'wScratchpad.js' 		=> 'js/lib/wScratchPad.js',
-							'jquery.timer.js' 		=> 'js/lib/jquery.timer.js',
-							'sniffer.js' 			=> 'js/sniffer.js',
-							'functions.js' 			=> 'js/functions.js',
-							'script.js' 			=> 'js/script.js',
-							'users.js' 				=> 'js/users.js',
-							'share.js' 				=> 'js/share.js',
-							'games.js' 				=> 'js/games.js',
-							'bootstrap.min.js' 		=> 'js/bootstrap.min.js',
+							'wScratchpad.js' => 'js/lib/wScratchPad.js',
+							'jquery.timer.js' => 'js/lib/jquery.timer.js',
+							'sniffer.js' => 'js/sniffer.js',
+							'functions.js' => 'js/functions.js',
+							'script.js' => 'js/script.js',
+							'users.js' => 'js/users.js',
+							'share.js' => 'js/share.js',
+							'games.js' => 'js/games.js',
+							'bootstrap.min.js' => 'js/bootstrap.min.js',
 						),
 						'filters' => array(),
 						'options' => array(
@@ -174,22 +178,18 @@ return array(
 		),
 
 		'routes' => array(
-			'admin.*' => array(
+			'zfcadmin.*' => array(
                 '@admin_css',
 				'@head_admin_js',
             ),
-				'admin.*' => array(
-						'@admin_css',
-						'@head_admin_js',
-				),
-			'frontend.*' => array( 
+			'frontend.*' => array(
 				'@frontend_css',
 				'@head_frontend_js',
 			),
 			'zfcuser.*' => array(
 				'@frontend_css',
 				'@head_frontend_js',
-			), 
+			),
 		),
 	),
 
@@ -216,50 +216,54 @@ return array(
     ),
     'router' => array(
         'routes' => array(
-            'elfinder' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route' => '/elfinder',
-                    'defaults' => array(
-                        'controller' => 'elfinder',
-                        'action'     => 'index',
-                    ),
-                ),
-                'may_terminate' => true,
-                'child_routes' => array(
-                    'connector' => array(
-                        'type' => 'Literal',
-                        'options' => array(
-                            'route' => '/connector',
-                            'defaults' => array(
-                                'controller' => 'elfinder',
-                                'action'     => 'connector',
-                            ),
-                        ),
-                    ),
-                    'ckeditor' => array(
-                        'type' => 'Literal',
-                        'options' => array(
-                            'route' => '/ckeditor',
-                            'defaults' => array(
-                                'controller' => 'elfinder',
-                                'action'     => 'ckeditor',
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-            // Give the possibility to call Cron from browser
-            'cron' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route' => '/cron',
-                    'defaults' => array(
-                        'controller' => 'adfabcore_console',
-                        'action' => 'cron'
-                    ),
-                ), 
-            ),
+                    	'frontend' => array(
+        		'child_routes' => array(
+		            'elfinder' => array(
+		                'type' => 'Literal',
+		                'options' => array(
+		                    'route' => 'elfinder',
+		                    'defaults' => array(
+		                        'controller' => 'elfinder',
+		                        'action'     => 'index',
+		                    ),
+		                ),
+		                'may_terminate' => true,
+		                'child_routes' => array(
+		                    'connector' => array(
+		                        'type' => 'Literal',
+		                        'options' => array(
+		                            'route' => '/connector',
+		                            'defaults' => array(
+		                                'controller' => 'elfinder',
+		                                'action'     => 'connector',
+		                            ),
+		                        ),
+		                    ),
+		                    'ckeditor' => array(
+		                        'type' => 'Literal',
+		                        'options' => array(
+		                            'route' => '/ckeditor',
+		                            'defaults' => array(
+		                                'controller' => 'elfinder',
+		                                'action'     => 'ckeditor',
+		                            ),
+		                        ),
+		                    ),
+		                ),
+		            ),
+		            // Give the possibility to call Cron from browser
+		            'cron' => array(
+		                'type' => 'Literal',
+		                'options' => array(
+		                    'route' => 'cron',
+		                    'defaults' => array(
+		                        'controller' => 'adfabcore_console',
+		                        'action' => 'cron'
+		                    ),
+		                ),
+		            ),
+        		),
+        	),
             'admin' => array(
                 'type' => 'Literal',
                 'options' => array(
@@ -588,14 +592,14 @@ return array(
         ),
     ),
 		
-	'theme' => array(
+	'design' => array(
 		'admin' => array(
 			'package' => 'default',
-			'design' => 'base',
+			'theme' => 'base',
 		),
 		'frontend' => array(
 			'package' => 'default',
-			'design' => 'base',
+			'theme' => 'base',
 		),
 	),
 );
