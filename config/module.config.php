@@ -48,7 +48,7 @@ return array(
 					'head_admin_js' => array(
 						'assets' => array(
 							'jquery-1.9.0.min.js' 			=> 'js/lib/jquery-1.9.0.min.js',
-							'jquery-ui.min.js' 				=> 'js/lib/jquery-ui.min.js',
+							'jquery-ui.js' 					=> 'http://code.jquery.com/ui/1.10.2/jquery-ui.js',
 							'bootstrap.min.js'				=> 'js/lib/bootstrap.min.js',
 							'jquery-ui-timepicker-addon.js' => 'js/lib/jquery-ui-timepicker-addon.js',
 							'json.js'						=> 'js/lib/json.js',
@@ -83,6 +83,17 @@ return array(
 							'output' => 'zfcadmin',
 						)
 					),
+					'admin_ckeditor' => array(
+						'assets' => array(
+							'js/lib/ckeditor/**/*',
+							'js/ckeditor-custom/**/*',
+							'css/ckeditor-custom/**/*',
+						),
+						'options' => array(
+							'move_raw' => true,
+							'output' => 'zfcadmin',
+						)
+					),
 				),
 			),
 			'frontend' => array(
@@ -109,26 +120,27 @@ return array(
 						'assets' => array(
 							//'html5.js' => 'js/html5.js',
 							//'pie.js' => 'js/lib/pie.js',
-							//'selectivizr-min.js' => 'js/lib/selectivizr-min.js',
-							'jquery-1.9.0.min.js' => 'js/lib/jquery-1.9.0.min.js',
-							'bootstrap.min.js' => 'js/bootstrap.min.js',
-							'games.js' => 'js/games.js',
-							'share.js' => 'js/share.js',
-							'users.js' => 'js/users.js',
-							'script.js' => 'js/script.js',
-							'functions.js' => 'js/functions.js',
-							'sniffer.js' => 'js/sniffer.js',
-							'jquery.timer.js' => 'js/lib/jquery.timer.js',
-							'wScratchpad.js' => 'js/lib/wScratchPad.js',
-							'jquery.limit-1.2.source.js' => 'js/lib/jquery.limit-1.2.source.js',
-							'jquery.uniform-2.0.js' => 'js/lib/jquery.uniform-2.0.js',
-							'bowser.min.js' => 'js/lib/bowser.min.js',
+							//'selectivizr-min.js' 	=> 'js/lib/selectivizr-min.js',
+							'jquery-1.9.0.min.js' 	=> 'js/lib/jquery-1.9.0.min.js',
+							'jquery-ui.js' 			=> 'http://code.jquery.com/ui/1.10.2/jquery-ui.js',
+							'bowser.min.js' 		=> 'js/lib/bowser.min.js',
+							'loader.js' 			=> 'js/loader.js',
+							'popin.js' 				=> 'js/popin.js',
+							'jscrollpane.js' 		=> 'js/lib/jscrollpane.js',
+							'mousewheel.js' 		=> 'js/lib/mousewheel.js',
+							'jquery.validate.min.js'=> 'js/lib/jquery.validate.min.js',
 							'jquery.nivo.slider.js' => 'js/lib/jquery.nivo.slider.js',
-							'jquery.validate.min.js' => 'js/lib/jquery.validate.min.js',
-							'mousewheel.js' => 'js/lib/mousewheel.js',
-							'jscrollpane.js' => 'js/lib/jscrollpane.js',
-							'popin.js' => 'js/popin.js',
-							'loader.js' => 'js/loader.js',
+							'jquery.uniform-2.0.js' => 'js/lib/jquery.uniform-2.0.js',
+							'jquery.limit-1.2.source.js' => 'js/lib/jquery.limit-1.2.source.js',
+							'wScratchpad.js' 		=> 'js/lib/wScratchPad.js',
+							'jquery.timer.js' 		=> 'js/lib/jquery.timer.js',
+							'sniffer.js' 			=> 'js/sniffer.js',
+							'functions.js' 			=> 'js/functions.js',
+							'script.js' 			=> 'js/script.js',
+							'users.js' 				=> 'js/users.js',
+							'share.js' 				=> 'js/share.js',
+							'games.js' 				=> 'js/games.js',
+							'bootstrap.min.js' 		=> 'js/bootstrap.min.js',
 						),
 						'filters' => array(),
 						'options' => array(
@@ -162,18 +174,22 @@ return array(
 		),
 
 		'routes' => array(
-			'zfcadmin.*' => array(
+			'admin.*' => array(
                 '@admin_css',
 				'@head_admin_js',
             ),
-			'frontend.*' => array(
+				'admin.*' => array(
+						'@admin_css',
+						'@head_admin_js',
+				),
+			'frontend.*' => array( 
 				'@frontend_css',
 				'@head_frontend_js',
 			),
 			'zfcuser.*' => array(
 				'@frontend_css',
 				'@head_frontend_js',
-			),
+			), 
 		),
 	),
 
@@ -242,10 +258,10 @@ return array(
                         'controller' => 'adfabcore_console',
                         'action' => 'cron'
                     ),
-                ),
+                ), 
             ),
-            'zfcadmin' => array(
-                'type' => 'literal',
+            'admin' => array(
+                'type' => 'Literal',
                 'options' => array(
                     'route'    => '/admin',
                     'defaults' => array(
@@ -537,14 +553,14 @@ return array(
             'system' => array(
                 'label' => 'System',
                 'id' => 'system-page',
-                'route' => 'zfcadmin/system',
+                'route' => 'admin/system',
                 'order' => 100,
                 'resource' => 'core',
                 'privilege' => 'edit',
                 'pages' => array(
                     'settings' => array(
                         'label' => 'Settings',
-                        'route' => 'zfcadmin/system/settings',
+                        'route' => 'admin/system/settings',
                         'resource' => 'core',
                         'privilege' => 'edit',
                     ),
@@ -557,7 +573,7 @@ return array(
         'admin' => array(
             'home' => array(
                 'label' => 'Accueil',
-                'route' => 'zfcadmin',
+                'route' => 'admin',
                 'order' => -100,
                 'resource' => 'core',
                 'privilege' => 'edit',

@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="span7">
-        	<form action="<?php echo $this->url('zfcadmin/formgen/form',array()) ?>" method="post" name="generate_form" id="generate_form">
+        	<form action="<?php echo $this->url('admin/formgen/form',array()) ?>" method="post" name="generate_form" id="generate_form">
                 <div class="form_title_head">
                     <input type="hidden" name="form_namespace_placeholder" value="">
                     <input type="hidden" name="form_class_name_placeholder" value="">
@@ -23,5 +23,5 @@
 </div>
 <script>
 // basepath global var put by Zend
-var basepath='<?php echo $this->url('zfcadmin',array(), array('force_canonical' => true)) ?>';
+var basepath='<?php echo $this->url('admin',array(), array('force_canonical' => true)) ?>';
 </script>

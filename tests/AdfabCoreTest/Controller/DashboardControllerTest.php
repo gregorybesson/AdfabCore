@@ -25,6 +25,6 @@ class DashboardControllerTest extends AbstractHttpControllerTestCase
     	$this->assertControllerName('adfabcore\controller\dashboard');
     	$this->assertControllerClass('DashboardController');
     	$this->assertActionName('index');
-    	$this->assertMatchedRouteName('zfcadmin');
+    	$this->assertMatchedRouteName('admin');
     }
 }

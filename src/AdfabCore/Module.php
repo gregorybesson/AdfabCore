@@ -275,6 +275,7 @@ class Module
                         return new Options\ModuleOptions(isset($config['adfabcore']) ? $config['adfabcore'] : array());
                     },
                     'adfabcore_transport' => 'AdfabCore\Mail\Transport\Service\TransportFactory',
+                    'admin_navigation' => 'AdfabCore\Service\AdminNavigationFactory',
                     'AdfabCore\Analytics\Tracker' => function($sm) {
                         $config = $sm->get('config');
                         $config = isset($config['adfabcore']) ? $config['adfabcore']['googleAnalytics'] : array('id' => 'UA-XXXXXXXX-X');
