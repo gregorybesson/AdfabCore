@@ -213,6 +213,7 @@ return array(
         'use_cookies' => true,
         'cookie_httponly' => true,
     ),
+		
     'router' => array(
         'routes' => array(
             'frontend' => array(
@@ -284,6 +285,16 @@ return array(
                 ),
                 'may_terminate' => true,
                 'child_routes' => array(
+                	'dashboard' => array(
+               			'type' => 'literal',
+              			'options' => array(
+              				'route'    => '/dashboard',
+                			'defaults' => array(
+               					'controller' => 'AdfabCore\Controller\Dashboard',
+                				'action'     => 'index',
+                			),
+               			),
+                	),
                     'system' => array(
                         'type' => 'literal',
                         'options' => array(
