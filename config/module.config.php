@@ -101,6 +101,15 @@ return array(
 							'output' => 'zfcadmin',
 						)
 					),
+					'admin_formgen' => array(
+						'assets' => array(
+							'js/form/*',
+						),
+						'options' => array(
+							'move_raw' => true,
+							'output' => 'zfcadmin',
+						)
+					),
 				),
 			),
 			'frontend' => array(
@@ -213,7 +222,7 @@ return array(
         'use_cookies' => true,
         'cookie_httponly' => true,
     ),
-		
+
     'router' => array(
         'routes' => array(
             'frontend' => array(
@@ -331,11 +340,11 @@ return array(
                     'formgen' => array(
                         'type'    => 'Literal',
                         'options' => array(
-                                'route'    => '/formgen',
-                                'defaults' => array(
-                                        'controller'    => 'AdfabCore\Controller\Formgen',
-                                        'action'        => 'index',
-                                ),
+                            'route'    => '/formgen',
+                            'defaults' => array(
+                   	            'controller'    => 'AdfabCore\Controller\Formgen',
+                                'action'        => 'index',
+                            ),
                         ),
                         'may_terminate' => true,
                         'child_routes' => array(
@@ -547,16 +556,19 @@ return array(
 
 	'core_layout' => array(
         'AdfabCore' => array(
-            'default_layout' => 'layout/homepage-2columns-right',
+            'default_layout' => 'layout/admin',
             'controllers' => array(
             	'AdfabCore\Controller\Dashboard'   => array(
             		'default_layout' => 'layout/admin',
-            	),	
+            	),
+            	'AdfabCore\Controller\Formgen' => array(
+            		'default_layout' => 'layout/admin',
+           		),
             ),
         ),
 	),
-		
-		
+
+
     'controllers' => array(
         'invokables' => array(
             'AdfabCore\Controller\Dashboard' => 'AdfabCore\Controller\DashboardController',
@@ -628,7 +640,7 @@ return array(
             __DIR__ . '/../view/frontend',
         ),
     ),
-		
+
 	/*'design' => array(
 		'admin' => array(
 			'package' => 'default',

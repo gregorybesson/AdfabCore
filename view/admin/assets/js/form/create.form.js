@@ -15,11 +15,11 @@ $(document).ready(function() {
 	var thirdTab = $('#add_form_element li:eq(2) a');
 	var fieldProp = $('#field_properties');
 
-	$('.delete_li').live("click", function () {
+	$(document).on("click", ".delete_li", function () {
 		$(this).parent().remove();
 	});
 	
-	$('.edit_form_text .edit_li').live("click", function () {
+	$(document).on("click", ".edit_form_text .edit_li", function () {
 		var liId = $(this).parent().attr('id');
 		secondTab.tab('show');
 		$.get(basepath+'/formgen/input', { name: "Editer le champ texte", id: liId}).done(function(data) {
@@ -28,7 +28,7 @@ $(document).ready(function() {
 	    });
 	});
 	
-	$('.edit_form_paragraph .edit_li').live("click", function () {
+	$(document).on("click", ".edit_form_paragraph .edit_li", function () {
 		var liId = $(this).parent().attr('id');
 		secondTab.tab('show');
 		$.get(basepath+'/formgen/paragraph', { name: "Editer le champ paragraphe", id: liId}).done(function(data) {
@@ -37,7 +37,7 @@ $(document).ready(function() {
 	    });
 	});
 	
-	$('.edit_form_upload .edit_li').live("click", function () {
+	$(document).on("click", ".edit_form_upload .edit_li", function () {
 		var liId = $(this).parent().attr('id');
 		secondTab.tab('show');
 		$.get(basepath+'/formgen/upload', { name: "Editer le champ fichier", id: liId}).done(function(data) {
@@ -46,7 +46,7 @@ $(document).ready(function() {
 	    });
 	});
 	
-	$('.edit_form_url .edit_li').live("click", function () {
+	$(document).on("click", ".edit_form_url .edit_li", function () {
 		var liId = $(this).parent().attr('id');
 		secondTab.tab('show');
 		$.get(basepath+'/formgen/url', { name: "Edit Web Site / Url Field", id: liId}).done(function(data) {
@@ -359,7 +359,7 @@ $(document).ready(function() {
 	 * generate the form
 	 * convert form to json
 	 */
-	$('#generate_form_button').live("click", function(e){
+	$(document).on("click", "#generate_form_button", function(e){
 		e.preventDefault();
 
         var allData = [];

@@ -43,7 +43,7 @@ class Module
         $sessionConfig->setOptions($config['session']);
         $sessionManager = new SessionManager($sessionConfig);
         $sessionManager->start();
-        
+
             // Design management : template and assets management
         if(isset($config['design'])){
         	$configHasChanged = false;
@@ -51,12 +51,12 @@ class Module
         	if(isset($config['design']['admin']) && isset($config['design']['admin']['package']) && isset($config['design']['admin']['theme'])){
         		$adminPath = __DIR__ . '/../../../../../design/admin/'. $config['design']['admin']['package'] .'/'. $config['design']['admin']['theme'];
         		$pathStack = array($adminPath);
-        		
+
         		// Assetic pour les CSS
         		$config['assetic_configuration']['modules']['admin']['root_path'][] = $adminPath . '/assets';
         		// Resolver des templates phtml
         		$viewResolverPathStack->addPaths($pathStack);
-        		
+
         		$filename = $adminPath . '/assets.php';
         		if(is_file($filename) && is_readable($filename)){
         			$configAssets = new \Zend\Config\Config(include $filename);
@@ -70,7 +70,7 @@ class Module
         		// Assetic pour les CSS
         		$config['assetic_configuration']['modules']['frontend']['root_path'][] = $frontendPath . '/assets';
         		$viewResolverPathStack->addPaths($pathStack);
-        		
+
         		$filename = $frontendPath . '/assets.php';
         		if(is_file($filename) && is_readable($filename)){
         			$configAssets = new \Zend\Config\Config(include $filename);
@@ -214,7 +214,7 @@ class Module
 
                 return $helper;
                 },
-                
+
                 'adminAssetPath' => function($sm) {
                 	$config = $sm->getServiceLocator()->has('Config') ? $sm->getServiceLocator()->get('Config') : array();
                 	$helper  = new View\Helper\AdminAssetPath;
@@ -226,7 +226,7 @@ class Module
                 	$helper->setBasePath($basePath);
                 	return $helper;
                 },
-                
+
                 'frontendAssetPath' => function($sm) {
                 	$config = $sm->getServiceLocator()->has('Config') ? $sm->getServiceLocator()->get('Config') : array();
                 	$helper  = new View\Helper\FrontendAssetPath;

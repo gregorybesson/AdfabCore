@@ -12,7 +12,7 @@ $(document).ready(function()
     /**
      * add_form_text
      */
-	$('#add_form_text').live("click", function(e){
+	$(document).on("click", "#add_form_text", function(e){
 		e.preventDefault();
 		addForm($('#add_form_data'), 'input', 'form_input', 'text');
 	});
@@ -20,7 +20,7 @@ $(document).ready(function()
     /**
      * add_form_url
      */
-	$('#add_form_url').live("click", function(e){
+	$(document).on("click", "#add_form_url", function(e){
 		e.preventDefault();
 		addForm($('#add_form_data'), 'input', 'form_input', 'url');
 	});
@@ -28,7 +28,7 @@ $(document).ready(function()
     /**
      * add_form_datye
      */
-	$('#add_form_date').live("click", function(e){
+	$(document).on("click", "#add_form_date", function(e){
 		e.preventDefault();
 		addForm($('#add_form_data'), 'input', 'form_input', 'date');
 	});
@@ -36,7 +36,7 @@ $(document).ready(function()
     /**
      * add_form_password
      */
-    $('#add_form_password').live("click", function(e){
+    $(document).on("click", "#add_form_password", function(e){
         e.preventDefault();
         addForm($('#add_form_data'), 'input', 'form_input', 'password');
     });
@@ -44,7 +44,7 @@ $(document).ready(function()
     /**
      * add_form_password_verify
      */
-    $('#add_form_password_verify').live("click", function(e){
+    $(document).on("click", "#add_form_password_verify", function(e){
         e.preventDefault();
         addForm($('#add_form_data'), 'input', 'form_input', 'password_verify');
     });
@@ -52,7 +52,7 @@ $(document).ready(function()
     /**
      * add_form_email
      */
-    $('#add_form_email').live("click", function(e){
+    $(document).on("click", "#add_form_email", function(e){
         e.preventDefault();
         addForm($('#add_form_data'), 'input', 'form_input', 'email');
     });
@@ -60,7 +60,7 @@ $(document).ready(function()
     /**
      * add_form_number
      */
-    $('#add_form_number').live("click", function(e){
+    $(document).on("click", "#add_form_number", function(e){
 		e.preventDefault();
 		addForm($('#add_form_data'), 'input', 'form_number', 'number');
 	});
@@ -68,7 +68,7 @@ $(document).ready(function()
     /**
      * add_form_phone
      */
-    $('#add_form_phone').live("click", function(e){
+    $(document).on("click", "#add_form_phone", function(e){
 		e.preventDefault();
 		addForm($('#add_form_data'), 'input', 'form_data', 'number');
 	});
@@ -76,7 +76,7 @@ $(document).ready(function()
     /**
      * add_form_paragraph
      */
-	$('#add_form_paragraph').live("click", function(e){
+	$(document).on("click", "#add_form_paragraph", function(e){
 		e.preventDefault();
 		addForm($('#add_form_data'), 'textarea', 'form_paragraph', 'paragraph');
 	});
@@ -84,7 +84,7 @@ $(document).ready(function()
     /**
      * add_form_fileupload
      */
-    $('#add_form_fileupload').live("click", function(e){
+    $(document).on("click", "#add_form_fileupload", function(e){
         e.preventDefault();
         addForm($('#add_form_data'), 'input', 'form_input', 'fileupload');
     });
@@ -92,12 +92,12 @@ $(document).ready(function()
     /**
      * add_form_checkbox
      */
-	$('#add_form_checkbox').live("click", function(e){
+	$(document).on("click", "#add_form_checkbox", function(e){
 		e.preventDefault();
 		addForm($('#add_form_data'), 'input', 'form_checkbox', 'checkbox');
 	});
 
-    $("button:contains('remove')").live("click", function(e){
+    $(document).on("click", "button:contains('remove')", function(e){
         e.preventDefault();
         $(this).parent('li').remove();
 
@@ -106,7 +106,7 @@ $(document).ready(function()
         $('#' + mainCheckbox + ' #check_' + remIdTemp).remove();
     });
 
-    $("button:contains('set default')").live("click", function(e){
+    $(document).on("click", "button:contains('set default')", function(e){
         e.preventDefault();
         var defId = $(this).attr('id').replace(/[^\d.]/g, "");
         var mainCheckbox = $('code').text();
@@ -117,7 +117,7 @@ $(document).ready(function()
         .attr({'type':'checkbox'}); // don't know why it doesn't work without this yet
     });
 
-    $("#add_new_checkbox_field").live("click", function(e){
+    $(document).on("click", "#add_new_checkbox_field", function(e){
         e.preventDefault();
         var mainCheckbox = $('code').text();
         var prevLi = $(this).parent('ul').children('li').last();
@@ -149,12 +149,12 @@ $(document).ready(function()
     /**
      * add_form_multiple_choices
      */
-    $('#add_form_radio').live("click", function(e){
+    $(document).on("click", "#add_form_radio", function(e){
         e.preventDefault();
         addForm($('#add_form_data'), 'input', 'form_radio', 'radio');
     });
 
-    $("button:contains('remove')").live("click", function(e){
+    $(document).on("click", "button:contains('remove')", function(e){
         e.preventDefault();
         $(this).parent('li').remove();
 
@@ -163,7 +163,7 @@ $(document).ready(function()
         $('#' + mainRadio + ' #radio_' + remIdTemp).remove();
     });
 
-    $("button:contains('set default')").live("click", function(e){
+    $(document).on("click", "button:contains('set default')", function(e){
         e.preventDefault();
         var defId = $(this).attr('id').replace(/[^\d.]/g, "");
         var mainRadio = $('code').text();
@@ -172,7 +172,7 @@ $(document).ready(function()
         $('#' + mainRadio).find('#form_radio_' + defId).attr({'checked':'checked'});
     });
 
-    $("#add_new_radio_field").live("click", function(e){
+    $(document).on("click", "#add_new_radio_field", function(e){
         e.preventDefault();
         var mainRadio = $('code').text();
         var prevLi = $(this).parent('ul').children('li').last();
@@ -204,12 +204,12 @@ $(document).ready(function()
     /**
      * add_form_dropdown
      */
-    $('#add_form_dropdown').live("click", function(e){
+    $(document).on("click", "#add_form_dropdown", function(e){
         e.preventDefault();
         addForm($('#add_form_data'), 'input', 'form_dropdown', 'dropdown');
     });
 
-    $("button:contains('remove')").live("click", function(e){
+    $(document).on("click", "button:contains('remove')", function(e){
         e.preventDefault();
         
         // if only one remove button is left, disable it
@@ -225,7 +225,7 @@ $(document).ready(function()
         $('#' + mainRadio + ' #dropdown_' + remIdTemp).remove();
     });
 
-    $("button:contains('set default')").live("click", function(e){
+    $(document).on("click", "button:contains('set default')", function(e){
         e.preventDefault();
         var defId = $(this).attr('id').replace(/[^\d.]/g, "");
         var mainRadio = $('code').text();
@@ -234,7 +234,7 @@ $(document).ready(function()
         $('#dropdown_rem' + defId).attr({'selected':'selected'});
     });
 
-    $("#add_new_dropdown_field").live("click", function(e){
+    $(document).on("click", #add_new_dropdown_field", function(e){
         e.preventDefault();
         var mainRadio = $('code').text();
         var prevLi = $(this).parent('ul').children('li').last();
@@ -265,7 +265,7 @@ $(document).ready(function()
     /**
      * add_form_credit_card
      */
-    $('#add_form_credit_card').live("click", function(e){
+    $(document).on("click", "#add_form_credit_card", function(e){
         e.preventDefault();
         addForm($('#add_form_data'), 'input', 'form_input', 'credit_card');
     });
@@ -273,7 +273,7 @@ $(document).ready(function()
     /**
      * add_form_hidden
      */
-    $('#add_form_hidden').live("click", function(e){
+    $(document).on("click", "#add_form_hidden", function(e){
         e.preventDefault();
         addForm($('#add_form_data'), 'input', 'form_input', 'hidden');
     });
