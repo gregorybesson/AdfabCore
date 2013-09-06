@@ -234,7 +234,7 @@ $(document).ready(function()
         $('#dropdown_rem' + defId).attr({'selected':'selected'});
     });
 
-    $(document).on("click", #add_new_dropdown_field", function(e){
+    $(document).on("click", "#add_new_dropdown_field", function(e){
         e.preventDefault();
         var mainRadio = $('code').text();
         var prevLi = $(this).parent('ul').children('li').last();

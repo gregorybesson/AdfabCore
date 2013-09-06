@@ -12,13 +12,13 @@ var formPropertiesJson = function(formData) {
 
     data.push({
         'name' : 'form_properties',
-        'namespace' : formData.find('[name="form_namespace_placeholder"]').attr('value'),
+        'namespace' : formData.find('[name="form_namespace_placeholder"]').val(),
         'title' : formData.find('.form_title_placeholder').html(),
         'description' : formData.find('.form_description_placeholder').html(),
-        'class' : formData.find('[name="form_class_placeholder"]').attr('value'),
-        'model_name' : formData.find('[name="form_model_placeholder"]').attr('value'),
-        'id' : formData.find('[name="form_id_placeholder"]').attr('value'),
-        'class_name' : formData.find('[name="form_class_name_placeholder"]').attr('value')
+        'class' : formData.find('[name="form_class_placeholder"]').val(),
+        'model_name' : formData.find('[name="form_model_placeholder"]').val(),
+        'id' : formData.find('[name="form_id_placeholder"]').val(),
+        'class_name' : formData.find('[name="form_class_name_placeholder"]').val()
     });
 
     return (data);

@@ -168,7 +168,7 @@ class FormgenController extends AbstractActionController
         $results = $request->getQuery ();
 
         $result = new ViewModel (array(
-                'result' => $results,
+            'result' => $results,
         ));
 
         $result->setTerminal ( true );

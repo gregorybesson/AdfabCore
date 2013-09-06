@@ -70,27 +70,28 @@ $(document).ready(function() {
      */
     $('#add_form_properties').click(function(e){
         e.preventDefault();
+        alert($('[name="form_title"]').val());
         var formTitle = $('.form_title_head');
         formTitle.find('.form_title_placeholder').html(
-            $('[name="form_title"]').attr('value')
+            $('[name="form_title"]').val()
         );
         formTitle.find('.form_description_placeholder').html(
-            $('[name="form_description"]').attr('value')
+            $('[name="form_description"]').val()
         );
         formTitle.find('[name="form_model_placeholder"]').attr('value',
-            $('[name="form_model"]').attr('value')
+            $('[name="form_model"]').val()
         );
         formTitle.find('[name="form_class_placeholder"]').attr('value',
-            $('[name="form_class"]').attr('value')
+            $('[name="form_class"]').val()
         );
         formTitle.find('[name="form_id_placeholder"]').attr('value',
-            $('[name="form_id"]').attr('value')
+            $('[name="form_id"]').val()
         );
         formTitle.find('[name="form_namespace_placeholder"]').attr('value',
-            $('[name="form_namespace"]').attr('value')
+            $('[name="form_namespace"]').val()
         );
         formTitle.find('[name="form_class_name_placeholder"]').attr('value',
-            $('[name="form_class_name"]').attr('value')
+            $('[name="form_class_name"]').val()
         );
 
         formTitle.css({'background-color' : '#87ffc1'}).animate({backgroundColor: '#ffffff'},{duration:1000});

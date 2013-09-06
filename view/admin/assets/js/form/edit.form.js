@@ -13,10 +13,10 @@ var editLineText = function editLineText (id, type){
     var liId = $('#'+id);
     var liClass = $('.'+id);
 
-    var requiredEdit    = liId.find('input[name="required"]').attr('value') == 'false' ? 'no' : 'yes';
+    var requiredEdit    = liId.find('input[name="required"]').val() == 'false' ? 'no' : 'yes';
     var labelEdit       = liId.find('.main_label').html();
     var pli = liId.find('.form_input').attr('placeholder');
-    var placeholderEdit = pli != 'undefined' ? pli : liId.find('input[name="placeholder_text"]').attr('value');
+    var placeholderEdit = pli != 'undefined' ? pli : liId.find('input[name="placeholder_text"]').val();
 
     if(type == 'line_number' || type == 'line_phone'){
         placeholderEdit = liId.find('.form_number').attr('placeholder');
@@ -28,64 +28,64 @@ var editLineText = function editLineText (id, type){
 
     //right side
     //general
-    var nameEdit        = liId.find('input[name="input_name"]').attr('value');
-    var classEdit       = liId.find('input[name="class"]').attr('value');
-    var idEdit          = liId.find('input[name="id"]').attr('value');
-    var minEdit         = liId.find('input[name="min"]').attr('value');
-    var maxEdit         = liId.find('input[name="max"]').attr('value');
+    var nameEdit        = liId.find('input[name="input_name"]').val();
+    var classEdit       = liId.find('input[name="class"]').val();
+    var idEdit          = liId.find('input[name="id"]').val();
+    var minEdit         = liId.find('input[name="min"]').val();
+    var maxEdit         = liId.find('input[name="max"]').val();
 
     //line_date
-    var dateMinEdit     = liId.find('input[name="date_min"]').attr('value');
-    var dateMaxEdit     = liId.find('input[name="date_max"]').attr('value');
-    var dateMinVEdit    = liId.find('input[name="date_min_validate"]').attr('value');
-    var dateMaxVEdit    = liId.find('input[name="date_miax_validate"]').attr('value');
-    var localeEdit      = liId.find('input[name="locale"]').attr('value');
-    var dateFormatEdit  = liId.find('input[name="date_format"]').attr('value');
+    var dateMinEdit     = liId.find('input[name="date_min"]').val();
+    var dateMaxEdit     = liId.find('input[name="date_max"]').val();
+    var dateMinVEdit    = liId.find('input[name="date_min_validate"]').val();
+    var dateMaxVEdit    = liId.find('input[name="date_miax_validate"]').val();
+    var localeEdit      = liId.find('input[name="locale"]').val();
+    var dateFormatEdit  = liId.find('input[name="date_format"]').val();
 
     //line_line_number
-    var validationEdit  = liId.find('input[name="validation"]').attr('value');
-    var html5Edit       = liId.find('input[name="html5"]').attr('value');
-    var numMinEdit      = liId.find('input[name="min_str"]').attr('value');
-    var numMaxEdit      = liId.find('input[name="max_str"]').attr('value');
+    var validationEdit  = liId.find('input[name="validation"]').val();
+    var html5Edit       = liId.find('input[name="html5"]').val();
+    var numMinEdit      = liId.find('input[name="min_str"]').val();
+    var numMaxEdit      = liId.find('input[name="max_str"]').val();
 
     //line_password_verify
-    var tokenEdit       = liId.find('input[name="token"]').attr('value');
+    var tokenEdit       = liId.find('input[name="token"]').val();
 
     //line_email
-    var invalidTypeEdit = liId.find('input[name="invalid_type"]').attr('value');
-    var isEmptyTypeEdit = liId.find('input[name="is_empty_type"]').attr('value');
+    var invalidTypeEdit = liId.find('input[name="invalid_type"]').val();
+    var isEmptyTypeEdit = liId.find('input[name="is_empty_type"]').val();
 
     //line_checkbox and line_radio
-    var numberIdEdit    = liId.find('input[name="label_class"]').attr('value');
-    var numberClassEdit = liId.find('input[name="label_id"]').attr('value');
+    var numberIdEdit    = liId.find('input[name="label_class"]').val();
+    var numberClassEdit = liId.find('input[name="label_id"]').val();
     //TODO : get values from the checkbox
 
     //line_radio
     //TODO : get values from the radio
 
     //line_dropdown
-    var notinarrayEdit = liId.find('input[name="number_notinarray"]').attr('value');
+    var notinarrayEdit = liId.find('input[name="number_notinarray"]').val();
 
     //line_upload
-    var filesizeMinEdit          = liId.find('input[name="upload_filesize_min"]').attr('value');
-    var filesizeMaxEdit          = liId.find('input[name="upload_filesize_max"]').attr('value');
-    var filefilesizeMinEdit      = liId.find('input[name="upload_filefilessize_min"]').attr('value');
-    var filefilesizeMaxEdit      = liId.find('input[name="upload_filefilessize_max"]').attr('value');
-    var filecounMinEdit          = liId.find('input[name="upload_filecount_min"]').attr('value');
-    var filecounMaxEdit          = liId.find('input[name="upload_filecount_max"]').attr('value');
-    var fileexcludeextensionEdit = liId.find('input[name="upload_fileexcludeextension"]').attr('value');
-    var filemimetypeEdit         = liId.find('input[name="upload_filemimetype"]').attr('value');
-    var fileexcludemimetypeEdit  = liId.find('input[name="upload_fileexcludemimetype"]').attr('value');
-    var fileexistsEdit           = liId.find('input[name="upload_fileexists"]').attr('value');
-    var fileextensionEdit        = liId.find('input[name="upload_fileextension"]').attr('value');
-    var minheightEdit            = liId.find('input[name="upload_fileimagesize_minheight"]').attr('value');
-    var maxheightEdit            = liId.find('input[name="upload_fileimagesize_maxheight"]').attr('value');
-    var minwidthEdit             = liId.find('input[name="upload_fileimagesize_minwidth"]').attr('value');
-    var maxwidthEdit             = liId.find('input[name="upload_fileimagesize_maxwidth"]').attr('value');
-    var fileiscompressedEdit     = liId.find('input[name="upload_fileiscompressed"]').attr('value');
-    var fileisimageEdit          = liId.find('input[name="upload_fileisimage"]').attr('value');
-    var filewordcountMinEdit     = liId.find('input[name="upload_filewordcount_min"]').attr('value');
-    var filewordcountMaxEdit     = liId.find('input[name="upload_filewordcount_max"]').attr('value');
+    var filesizeMinEdit          = liId.find('input[name="upload_filesize_min"]').val();
+    var filesizeMaxEdit          = liId.find('input[name="upload_filesize_max"]').val();
+    var filefilesizeMinEdit      = liId.find('input[name="upload_filefilessize_min"]').val();
+    var filefilesizeMaxEdit      = liId.find('input[name="upload_filefilessize_max"]').val();
+    var filecounMinEdit          = liId.find('input[name="upload_filecount_min"]').val();
+    var filecounMaxEdit          = liId.find('input[name="upload_filecount_max"]').val();
+    var fileexcludeextensionEdit = liId.find('input[name="upload_fileexcludeextension"]').val();
+    var filemimetypeEdit         = liId.find('input[name="upload_filemimetype"]').val();
+    var fileexcludemimetypeEdit  = liId.find('input[name="upload_fileexcludemimetype"]').val();
+    var fileexistsEdit           = liId.find('input[name="upload_fileexists"]').val();
+    var fileextensionEdit        = liId.find('input[name="upload_fileextension"]').val();
+    var minheightEdit            = liId.find('input[name="upload_fileimagesize_minheight"]').val();
+    var maxheightEdit            = liId.find('input[name="upload_fileimagesize_maxheight"]').val();
+    var minwidthEdit             = liId.find('input[name="upload_fileimagesize_minwidth"]').val();
+    var maxwidthEdit             = liId.find('input[name="upload_fileimagesize_maxwidth"]').val();
+    var fileiscompressedEdit     = liId.find('input[name="upload_fileiscompressed"]').val();
+    var fileisimageEdit          = liId.find('input[name="upload_fileisimage"]').val();
+    var filewordcountMinEdit     = liId.find('input[name="upload_filewordcount_min"]').val();
+    var filewordcountMaxEdit     = liId.find('input[name="upload_filewordcount_max"]').val();
 
     if(type == 'line_text'){
         defaultValues(liClass, labelEdit, nameEdit, placeholderEdit, requiredEdit, minEdit, maxEdit, classEdit, idEdit);
