@@ -99,7 +99,7 @@ class Module
             
             $viewModel 		 = $e->getViewModel();
             $match			 = $e->getRouteMatch();
-            $channel		 = $match->getParam('channel', '');
+            $channel		 = isset($match)? $match->getParam('channel', ''):'';
             $viewModel->channel = $channel;
             foreach($viewModel->getChildren() as $child){
             	$child->channel = $channel;

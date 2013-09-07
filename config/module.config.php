@@ -229,7 +229,7 @@ return array(
             'frontend' => array(
             	'type' => 'AdfabCore\Mvc\Router\Http\RegexSlash',
             	'options' => array(
-            		'regex'    => '/(?<channel>[embed|facebook|platform|mobile]+)?(/)?',
+            		'regex'    => '\/(?<channel>(embed|facebook|platform|mobile)+)?\/?',
             		'defaults' => array(
          				'controller' => 'AdfabCore\Controller\Dashboard',
             			'action'     => 'index',
