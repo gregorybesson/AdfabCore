@@ -16,7 +16,7 @@ class FormgenController extends AbstractActionController
     {
         $renderer = $this->serviceLocator->get('Zend\View\Renderer\RendererInterface');
         $headScript = $this->getServiceLocator()->get('viewhelpermanager')->get('HeadScript');
-        $headScript->appendFile ( $renderer->adminAssetPath('js/form/parse.form.js'));
+        $headScript->appendFile ( $renderer->basePath() . '/js/form/parse.form.js' );
 
         $formId = $this->params('form');
 
@@ -48,12 +48,13 @@ class FormgenController extends AbstractActionController
     {
         $renderer = $this->serviceLocator->get('Zend\View\Renderer\RendererInterface');
         $headScript = $this->getServiceLocator()->get('viewhelpermanager')->get('HeadScript');
-        $headScript->appendFile ( $renderer->adminAssetPath('js/form/create.form.js'));
-        $headScript->appendFile ( $renderer->adminAssetPath('js/form/line.text.js'));
-        $headScript->appendFile ( $renderer->adminAssetPath('js/form/add.form.js'));
-        $headScript->appendFile ( $renderer->adminAssetPath('js/form/json.form.js'));
-        $headScript->appendFile ( $renderer->adminAssetPath('js/form/edit.form.js'));
+        $headScript->appendFile ( $renderer->basePath() . '/js/form/create.form.js' );
+        $headScript->appendFile ( $renderer->basePath() . '/js/form/line.text.js' );
+        $headScript->appendFile ( $renderer->basePath() . '/js/form/add.form.js' );
+        $headScript->appendFile ( $renderer->basePath() . '/js/form/json.form.js' );
+        $headScript->appendFile ( $renderer->basePath() . '/js/form/edit.form.js' );
 
+        //$form = '';
         return array();
     }
 
@@ -168,7 +169,7 @@ class FormgenController extends AbstractActionController
         $results = $request->getQuery ();
 
         $result = new ViewModel (array(
-            'result' => $results,
+                'result' => $results,
         ));
 
         $result->setTerminal ( true );

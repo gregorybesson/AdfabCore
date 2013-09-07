@@ -51,11 +51,12 @@ return array(
 					'head_admin_js' => array(
 						'assets' => array(
 							'jquery-1.9.0.min.js' 			=> 'js/lib/jquery-1.9.0.min.js',
+							'admin.js'						=> 'js/admin/admin.js',
+							'jquery-validate.js'			=> 'js/lib/jquery.validate.min.js',
 							'jquery-ui.min.js' 				=> 'js/lib/jquery-ui.min.js',
 							'bootstrap.min.js'				=> 'js/lib/bootstrap.min.js',
 							'jquery-ui-timepicker-addon.js' => 'js/lib/jquery-ui-timepicker-addon.js',
 							'json.js'						=> 'js/lib/json.js',
-							'admin.js'						=> 'js/admin/admin.js',
 							'drag.js'						=> 'js/admin/drag.js',
 						),
 						'filters' => array(),
@@ -222,17 +223,18 @@ return array(
         'use_cookies' => true,
         'cookie_httponly' => true,
     ),
-
+		
     'router' => array(
         'routes' => array(
             'frontend' => array(
-            	'type' => 'Zend\Mvc\Router\Http\Literal',
+            	'type' => 'AdfabCore\Mvc\Router\Http\RegexSlash',
             	'options' => array(
-            		'route'    => '/',
+            		'regex'    => '/(?<channel>[embed|facebook|platform|mobile]+)?(/)?',
             		'defaults' => array(
          				'controller' => 'AdfabCore\Controller\Dashboard',
             			'action'     => 'index',
             		),
+            		'spec' => '/%channel%/',
             	),
            		'may_terminate' => true,
         		'child_routes' => array(
@@ -340,11 +342,11 @@ return array(
                     'formgen' => array(
                         'type'    => 'Literal',
                         'options' => array(
-                            'route'    => '/formgen',
-                            'defaults' => array(
-                   	            'controller'    => 'AdfabCore\Controller\Formgen',
-                                'action'        => 'index',
-                            ),
+                                'route'    => '/formgen',
+                                'defaults' => array(
+                                        'controller'    => 'AdfabCore\Controller\Formgen',
+                                        'action'        => 'index',
+                                ),
                         ),
                         'may_terminate' => true,
                         'child_routes' => array(
@@ -556,19 +558,16 @@ return array(
 
 	'core_layout' => array(
         'AdfabCore' => array(
-            'default_layout' => 'layout/admin',
+            'default_layout' => 'layout/homepage-2columns-right',
             'controllers' => array(
             	'AdfabCore\Controller\Dashboard'   => array(
             		'default_layout' => 'layout/admin',
-            	),
-            	'AdfabCore\Controller\Formgen' => array(
-            		'default_layout' => 'layout/admin',
-           		),
+            	),	
             ),
         ),
 	),
-
-
+		
+		
     'controllers' => array(
         'invokables' => array(
             'AdfabCore\Controller\Dashboard' => 'AdfabCore\Controller\DashboardController',
@@ -640,7 +639,7 @@ return array(
             __DIR__ . '/../view/frontend',
         ),
     ),
-
+		
 	/*'design' => array(
 		'admin' => array(
 			'package' => 'default',

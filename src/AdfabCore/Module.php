@@ -43,7 +43,7 @@ class Module
         $sessionConfig->setOptions($config['session']);
         $sessionManager = new SessionManager($sessionConfig);
         $sessionManager->start();
-
+        
             // Design management : template and assets management
         if(isset($config['design'])){
         	$configHasChanged = false;
@@ -51,12 +51,12 @@ class Module
         	if(isset($config['design']['admin']) && isset($config['design']['admin']['package']) && isset($config['design']['admin']['theme'])){
         		$adminPath = __DIR__ . '/../../../../../design/admin/'. $config['design']['admin']['package'] .'/'. $config['design']['admin']['theme'];
         		$pathStack = array($adminPath);
-
+        		
         		// Assetic pour les CSS
         		$config['assetic_configuration']['modules']['admin']['root_path'][] = $adminPath . '/assets';
         		// Resolver des templates phtml
         		$viewResolverPathStack->addPaths($pathStack);
-
+        		
         		$filename = $adminPath . '/assets.php';
         		if(is_file($filename) && is_readable($filename)){
         			$configAssets = new \Zend\Config\Config(include $filename);
@@ -70,7 +70,7 @@ class Module
         		// Assetic pour les CSS
         		$config['assetic_configuration']['modules']['frontend']['root_path'][] = $frontendPath . '/assets';
         		$viewResolverPathStack->addPaths($pathStack);
-
+        		
         		$filename = $frontendPath . '/assets.php';
         		if(is_file($filename) && is_readable($filename)){
         			$configAssets = new \Zend\Config\Config(include $filename);
@@ -96,6 +96,14 @@ class Module
             $view   = $serviceManager->get('ViewHelperManager');
             $plugin = $view->get('googleAnalytics');
             $plugin();
+            
+            $viewModel 		 = $e->getViewModel();
+            $match			 = $e->getRouteMatch();
+            $channel		 = $match->getParam('channel', '');
+            $viewModel->channel = $channel;
+            foreach($viewModel->getChildren() as $child){
+            	$child->channel = $channel;
+            }
         });
 
         // Detect if the app is called from FB and store unencrypted signed_request
@@ -123,7 +131,8 @@ class Module
                 $match			 = $e->getRouteMatch();
                 $controllerName  = $match->getParam('controller', 'not-found');
                 $actionName 	 = $match->getParam('action', 'not-found');
-                $viewModel 		 = $e->getViewModel();
+                $channel		 = $match->getParam('channel', 'not-found');
+                $viewModel 		 = $e->getViewModel();     
 
                 //print_r($match);
 
@@ -132,12 +141,22 @@ class Module
                 /**
                  * Assign the correct layout
                  */
-                if (isset($config['core_layout'][$moduleName]['controllers'][$controllerName]['actions'][$actionName]['default_layout'])) {
+                
+                if (isset($config['core_layout'][$moduleName]['controllers'][$controllerName]['actions'][$actionName]['channel'][$channel]['default_layout'])) {
+                    //print_r($config['core_layout'][$moduleName]['controllers'][$controllerName]['actions'][$actionName]['channel'][$channel]['default_layout']);
+                    $controller->layout($config['core_layout'][$moduleName]['controllers'][$controllerName]['actions'][$actionName]['channel'][$channel]['default_layout']);
+                } elseif (isset($config['core_layout'][$moduleName]['controllers'][$controllerName]['actions'][$actionName]['default_layout'])) {
                     //print_r($config['core_layout'][$moduleName]['controllers'][$controllerName]['actions'][$actionName]['default_layout']);
                     $controller->layout($config['core_layout'][$moduleName]['controllers'][$controllerName]['actions'][$actionName]['default_layout']);
+                } elseif (isset($config['core_layout'][$moduleName]['controllers'][$controllerName]['channel'][$channel]['default_layout'])) {
+                    //print_r($config['core_layout'][$moduleName]['controllers'][$controllerName]['channel'][$channel]['default_layout']);
+                    $controller->layout($config['core_layout'][$moduleName]['controllers'][$controllerName]['channel'][$channel]['default_layout']);
                 } elseif (isset($config['core_layout'][$moduleName]['controllers'][$controllerName]['default_layout'])) {
                     //print_r($config['core_layout'][$moduleName]['controllers'][$controllerName]['default_layout']);
                     $controller->layout($config['core_layout'][$moduleName]['controllers'][$controllerName]['default_layout']);
+                } elseif (isset($config['core_layout'][$moduleName]['channel'][$channel]['default_layout'])) {
+                    //print_r($config['core_layout'][$moduleName]['channel'][$channel]['default_layout']);
+                    $controller->layout($config['core_layout'][$moduleName]['channel'][$channel]['default_layout']);
                 } elseif (isset($config['core_layout'][$moduleName]['default_layout'])) {
                     //print_r($config['core_layout'][$moduleName]['default_layout']);
                     $controller->layout($config['core_layout'][$moduleName]['default_layout']);
@@ -214,7 +233,7 @@ class Module
 
                 return $helper;
                 },
-
+                
                 'adminAssetPath' => function($sm) {
                 	$config = $sm->getServiceLocator()->has('Config') ? $sm->getServiceLocator()->get('Config') : array();
                 	$helper  = new View\Helper\AdminAssetPath;
@@ -226,7 +245,7 @@ class Module
                 	$helper->setBasePath($basePath);
                 	return $helper;
                 },
-
+                
                 'frontendAssetPath' => function($sm) {
                 	$config = $sm->getServiceLocator()->has('Config') ? $sm->getServiceLocator()->get('Config') : array();
                 	$helper  = new View\Helper\FrontendAssetPath;

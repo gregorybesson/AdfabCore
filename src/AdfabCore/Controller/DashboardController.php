@@ -9,6 +9,7 @@ class DashboardController extends AbstractActionController
 {
     public function indexAction()
     {
-    	return new ViewModel();
+    	return $this->forward()->dispatch('adminstats', array('action' => 'index'));
+    	//return new ViewModel();
     }
 }
