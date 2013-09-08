@@ -1,5 +1,5 @@
 <?php
-namespace AdfabUserTest;
+namespace PlaygroundUserTest;
 
 use Zend\Loader\AutoloaderFactory;
 use Zend\Mvc\Service\ServiceManagerConfig;
